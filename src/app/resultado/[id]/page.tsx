@@ -25,6 +25,7 @@ export default async function ResultadoPage({ params }: Props) {
   const resultado = notasRaw._resultado_ia ? notasRaw._resultado_ia : gerarDiagnostico(notasRaw as NotasModulo)
 
   const nome = (avaliacao.leads as any)?.nome || 'Visitante'
+  const segmento = notasRaw._segmento || ''
 
-  return <ResultadoClient resultado={resultado} nome={nome} avaliacaoId={params.id} />
+  return <ResultadoClient resultado={resultado} nome={nome} avaliacaoId={params.id} segmento={segmento} />
 }

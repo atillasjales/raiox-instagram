@@ -71,10 +71,28 @@ export interface ResultadoDiagnostico {
   plano_acao: PlanoAcao
 }
 
+export interface EstrategiaConteudo {
+  stories: {
+    sequencias: string[]
+    caixinha_perguntas: string[]
+    transformacoes: string[]
+    interacoes: string[]
+  }
+  reels: Array<{ formato: string; tema: string; descricao: string }>
+  feed: Array<{ formato: string; tema: string; descricao: string }>
+  destaques: string[]
+  linha_editorial: {
+    frequencia: string
+    distribuicao: string
+    calendario: string
+  }
+}
+
 export interface PlanoAcao {
   prioridades: string[]
   oferta_recomendada: 'ativacao' | 'assessoria' | 'ambos'
   mensagem_cta: string
+  estrategia_conteudo?: EstrategiaConteudo
 }
 
 // ─── Form ─────────────────────────────────────────────────────────────────────

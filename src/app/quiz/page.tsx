@@ -57,7 +57,7 @@ export default function QuizPage() {
       const res = await fetch('/api/avaliacoes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lead_id: leadId, segmento: leadSegmento, notas }),
+        body: JSON.stringify({ lead_id: leadId, segmento: leadSegmento, nome: leadNome, notas }),
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error)

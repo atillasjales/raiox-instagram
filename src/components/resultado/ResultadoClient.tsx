@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ResultadoDiagnostico } from '@/types'
+import { ResultadoDiagnostico, NivelModulo } from '@/types'
 import { NIVEL_CONFIG, MODULOS } from '@/lib/quiz-data'
 import {
   RadarChart,
@@ -16,10 +16,17 @@ interface Props {
   resultado: ResultadoDiagnostico
   nome: string
   avaliacaoId: string
+  segmento: string
 }
 
-export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props) {
-  const [activeModuleInfo, setActiveModuleInfo] = useState<{ titulo: string, nota: number, desc: string } | null>(null)
+export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento }: Props) {
+  const [activeModuleInfo, setActiveModuleInfo] = useState<{
+    titulo: string
+    nota: number
+    desc: string
+    nivel: NivelModulo
+    recomendacoes: string[]
+  } | null>(null)
 
   const nivelConfig = NIVEL_CONFIG[resultado.nivel_geral]
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5581999999999'
@@ -53,11 +60,12 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
     try {
       const html2pdf = (await import('html2pdf.js')).default
       const opt = {
-        margin: 15,
+        margin: [15, 10, 15, 10] as [number, number, number, number],
         filename: `Raio-X-Troppa-${nome}.pdf`,
-        image: { type: 'jpeg' as const, quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const }
+        image: { type: 'jpeg' as const, quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true, logging: false },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] as any }
       }
       await html2pdf().set(opt).from(element).save()
     } catch (e) {
@@ -119,12 +127,51 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
           </div>
 
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left shadow-lg">
-            <h3 className="font-display font-bold text-lg text-brand-cream mb-2">Entendendo seu resultado:</h3>
-            <p className="text-sm text-brand-muted leading-relaxed">
-              {resultado.nivel_geral === 'perdido' && "O Modo Perdido indica que o seu perfil está como um barco à deriva, nadando contra a maré. Faltam bases sólidas (bio, destaque, constância) e o pouco tráfego que chega acaba indo embora sem comprar. Você precisa de arrumar a casa urgente antes de investir mais força."}
-              {resultado.nivel_geral === 'luneta' && "O Modo Luneta significa que você consegue enxergar o objetivo (vendas e relevância) lá na frente, mas ainda está desfocado. Você já tem coisas funcionando, mas faltam os ajustes finos estratégicos e consistência para transformar seguidores soltos em comunidade pagante."}
-              {resultado.nivel_geral === 'tesouro' && "O Modo Tesouro prova que você está sentado em uma mina de ouro! Suas engrenagens já rodam muito bem e geram valor extremo. O que falta é escalar os processos, criar ofertas de maior poder e colocar mais tráfego qualificado em cima do que já funciona."}
-            </p>
+            <h3 className="font-display font-bold text-lg text-brand-cream mb-4">Entendendo seu resultado:</h3>
+            <div className="space-y-4 text-sm text-brand-muted leading-relaxed">
+              {resultado.nivel_geral === 'perdido' && (
+                <div className="space-y-3">
+                  <p>
+                    <strong className="text-white">🔴 Modo Perdido</strong> — Seu perfil está como um barco à deriva, nadando contra a maré. Isso significa que faltam <strong>bases sólidas</strong> (bio clara, destaques estratégicos, publicações consistentes) e o pouco tráfego que chega acaba indo embora sem converter.
+                  </p>
+                  <p>
+                    O resultado que está vendo reflete um perfil que ainda não tem credibilidade suficiente para vender. A boa notícia? Isso é <strong>totalmente reversível</strong>. Os próximos 30-60 dias são críticos.
+                  </p>
+                  <p>
+                    <strong>O que fazer:</strong> Você precisa arrumar a casa urgente antes de investir em tráfego. Foco em estrutura (perfil + destaques), diferenciação clara (por que alguém deveria seguir você?) e consistência na publicação.
+                  </p>
+                  {segmento && <p className="italic">Para um negócio de {segmento}, isso significa que faltam sinais de autoridade e confiabilidade que clientes desse mercado buscam.</p>}
+                </div>
+              )}
+              {resultado.nivel_geral === 'luneta' && (
+                <div className="space-y-3">
+                  <p>
+                    <strong className="text-white">🟡 Modo Luneta</strong> — Você consegue enxergar o objetivo (vendas e relevância) lá na frente, mas ainda está desfocado. Isso significa que você <strong>já tem coisas funcionando</strong>, mas faltam os ajustes finos estratégicos para disparar.
+                  </p>
+                  <p>
+                    Seus seguidores existem, mas faltam mecanismos para transformar essa audiência em comunidade pagante. Você tem o potencial, mas precisa afinar a estratégia.
+                  </p>
+                  <p>
+                    <strong>O que fazer:</strong> Não comece do zero. Melhore o que já está meio certo. Ajuste a estratégia de conteúdo, potencialize a interação com audiência, crie ofertas mais claras e teste resultados com tráfego pago.
+                  </p>
+                  {segmento && <p className="italic">Para um negócio de {segmento}, você está na faixa que permite crescimento acelerado com estratégia certa.</p>}
+                </div>
+              )}
+              {resultado.nivel_geral === 'tesouro' && (
+                <div className="space-y-3">
+                  <p>
+                    <strong className="text-white">🟢 Modo Tesouro</strong> — Parabéns! Você está sentado em uma mina de ouro 🎯. Suas engrenagens já rodam muito bem, a audiência interage naturalmente e há sinais de vendas acontecendo.
+                  </p>
+                  <p>
+                    Isso <strong>não é acaso</strong> — você já fez muito certo. Bio, conteúdo, engajamento e posicionamento estão alinhados. O que falta é escala e maximização.
+                  </p>
+                  <p>
+                    <strong>O que fazer:</strong> Hora de <strong>escalar</strong>. Crie ofertas de maior valor, use tráfego pago para amplificar o que já funciona, crie produtos/programas para monetizar melhor a audiência, lance colaborações estratégicas.
+                  </p>
+                  {segmento && <p className="italic">Para um negócio de {segmento}, você está pronto para lançar serviços premium e construir comunidades VIP.</p>}
+                </div>
+              )}
+            </div>
           </div>
 
           <button
@@ -147,14 +194,23 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
             <ResponsiveContainer width="100%" height={320}>
               <RadarChart data={radarData} onClick={(e) => {
                 if (e && e.activePayload && e.activePayload.length > 0) {
-                  const data = e.activePayload[0].payload;
-                  setActiveModuleInfo({ titulo: data.subject, nota: data.nota, desc: data.desc })
+                  const data = e.activePayload[0].payload
+                  const diagData = resultado.diagnostico_modulos.find(d => d.titulo === data.subject)
+                  if (diagData) {
+                    setActiveModuleInfo({
+                      titulo: data.subject,
+                      nota: data.nota,
+                      desc: data.desc,
+                      nivel: diagData.nivel,
+                      recomendacoes: diagData.recomendacoes.slice(0, 2)
+                    })
+                  }
                 }
               }}>
                 <PolarGrid stroke="rgba(255,255,255,0.1)" />
                 <PolarAngleAxis
                   dataKey="subject"
-                  tick={{ fill: '#888888', fontSize: 11, fontFamily: 'DM Sans', fontWeight: 600, cursor: 'pointer' }}
+                  tick={{ fill: '#CCCCCC', fontSize: 13, fontFamily: 'DM Sans', fontWeight: 600, cursor: 'pointer' }}
                 />
                 <PolarRadiusAxis
                   angle={90}
@@ -182,14 +238,40 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
 
             {/* Explicação do clique no Radar */}
             {activeModuleInfo ? (
-              <div className="mt-6 bg-brand-pink/10 border border-brand-pink/20 rounded-xl p-4 animate-fade-in-up">
+              <div className="mt-6 bg-brand-pink/10 border border-brand-pink/20 rounded-xl p-6 animate-fade-in-up space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="font-bold text-brand-cream">{activeModuleInfo.titulo} (Nota {activeModuleInfo.nota.toFixed(1)})</h4>
-                    <p className="text-xs text-brand-muted mt-1">{activeModuleInfo.desc}</p>
+                    <div className="flex items-center gap-3 mb-2">
+                      <h4 className="font-bold text-brand-cream text-lg">{activeModuleInfo.titulo}</h4>
+                      <div
+                        className="text-xs font-medium px-3 py-1 rounded-full"
+                        style={{
+                          color: NIVEL_CONFIG[activeModuleInfo.nivel].cor,
+                          background: `${NIVEL_CONFIG[activeModuleInfo.nivel].cor}20`,
+                          border: `1px solid ${NIVEL_CONFIG[activeModuleInfo.nivel].cor}40`,
+                        }}
+                      >
+                        {NIVEL_CONFIG[activeModuleInfo.nivel].emoji} {NIVEL_CONFIG[activeModuleInfo.nivel].label}
+                      </div>
+                    </div>
+                    <div className="text-sm text-brand-cream font-semibold mb-3">
+                      Nota: {activeModuleInfo.nota.toFixed(1)}/10
+                    </div>
+                    <p className="text-xs text-brand-muted mb-4">{activeModuleInfo.desc}</p>
                   </div>
-                  <button onClick={() => setActiveModuleInfo(null)} className="text-brand-muted hover:text-white text-lg leading-none">&times;</button>
+                  <button onClick={() => setActiveModuleInfo(null)} className="text-brand-muted hover:text-white text-lg leading-none flex-shrink-0">&times;</button>
                 </div>
+                {activeModuleInfo.recomendacoes.length > 0 && (
+                  <div className="border-t border-brand-pink/20 pt-4 space-y-2">
+                    <p className="text-xs font-semibold text-brand-cream">Primeiras ações:</p>
+                    {activeModuleInfo.recomendacoes.map((rec, i) => (
+                      <div key={i} className="flex gap-2 text-xs text-brand-muted">
+                        <span className="text-brand-pink flex-shrink-0">✓</span>
+                        <span>{rec}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <p className="text-center text-xs text-brand-muted mt-4">👉 Toque nos pontos do gráfico para detalhar</p>
@@ -253,14 +335,15 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
 
                   <p className="text-brand-muted text-sm mb-4">{diag.descricao}</p>
 
-                  {diag.nivel !== 'tesouro' && diag.recomendacoes.length > 0 && (
+                  {diag.recomendacoes.length > 0 && (
                     <div className="space-y-2">
-                      {diag.recomendacoes.slice(0, 2).map((rec, i) => (
+                      <p className="text-xs font-semibold text-brand-cream/70">Recomendações:</p>
+                      {diag.recomendacoes.map((rec, i) => (
                         <div
                           key={i}
-                          className="flex gap-3 text-sm text-brand-cream/80 glass-card-mid rounded-lg p-3"
+                          className="flex gap-3 text-xs text-brand-cream/80 glass-card-mid rounded-lg p-3"
                         >
-                          <span className="text-brand-pink mt-0.5 flex-none">→</span>
+                          <span className="text-brand-pink mt-0.5 flex-none">{i + 1}.</span>
                           <span>{rec}</span>
                         </div>
                       ))}
@@ -293,6 +376,124 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
             </div>
           </div>
         </section>
+
+        {/* Content Strategy */}
+        {resultado.plano_acao.estrategia_conteudo && (
+          <section className="mb-12">
+            <h2 className="font-display font-bold text-2xl text-brand-cream mb-6">
+              🎬 Estratégia de Conteúdo{segmento && ` para ${segmento}`}
+            </h2>
+            <div className="space-y-6">
+              {/* Stories */}
+              <div className="glass-card rounded-2xl border border-white/5 p-7">
+                <h3 className="font-semibold text-brand-cream mb-4 flex items-center gap-2">
+                  📱 Stories
+                </h3>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-2">Sequências Narrativas:</p>
+                    <ul className="space-y-1">
+                      {resultado.plano_acao.estrategia_conteudo.stories.sequencias.map((seq, i) => (
+                        <li key={i} className="text-sm text-brand-cream/80 flex gap-2">
+                          <span className="text-brand-pink">•</span> {seq}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-2">Caixa de Perguntas:</p>
+                    <ul className="space-y-1">
+                      {resultado.plano_acao.estrategia_conteudo.stories.caixinha_perguntas.map((cx, i) => (
+                        <li key={i} className="text-sm text-brand-cream/80 flex gap-2">
+                          <span className="text-brand-pink">•</span> {cx}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-2">Transformações a Mostrar:</p>
+                    <ul className="space-y-1">
+                      {resultado.plano_acao.estrategia_conteudo.stories.transformacoes.map((trans, i) => (
+                        <li key={i} className="text-sm text-brand-cream/80 flex gap-2">
+                          <span className="text-brand-pink">•</span> {trans}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-2">Mecânicas de Interação:</p>
+                    <ul className="space-y-1">
+                      {resultado.plano_acao.estrategia_conteudo.stories.interacoes.map((int, i) => (
+                        <li key={i} className="text-sm text-brand-cream/80 flex gap-2">
+                          <span className="text-brand-pink">•</span> {int}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Reels */}
+              <div className="glass-card rounded-2xl border border-white/5 p-7">
+                <h3 className="font-semibold text-brand-cream mb-4">▶️ 5 Ideias de Reels</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {resultado.plano_acao.estrategia_conteudo.reels.map((reel, i) => (
+                    <div key={i} className="glass-card-mid p-4 rounded-lg">
+                      <p className="text-xs font-semibold text-brand-pink uppercase mb-1">{reel.formato}</p>
+                      <p className="text-sm font-semibold text-brand-cream mb-2">{reel.tema}</p>
+                      <p className="text-xs text-brand-muted">{reel.descricao}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Feed */}
+              <div className="glass-card rounded-2xl border border-white/5 p-7">
+                <h3 className="font-semibold text-brand-cream mb-4">📸 5 Ideias de Posts para Feed</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {resultado.plano_acao.estrategia_conteudo.feed.map((post, i) => (
+                    <div key={i} className="glass-card-mid p-4 rounded-lg">
+                      <p className="text-xs font-semibold text-brand-pink uppercase mb-1">{post.formato}</p>
+                      <p className="text-sm font-semibold text-brand-cream mb-2">{post.tema}</p>
+                      <p className="text-xs text-brand-muted">{post.descricao}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Highlights */}
+              <div className="glass-card rounded-2xl border border-white/5 p-7">
+                <h3 className="font-semibold text-brand-cream mb-4">⭐ Sugestões de Destaques</h3>
+                <div className="flex flex-wrap gap-2">
+                  {resultado.plano_acao.estrategia_conteudo.destaques.map((destaque, i) => (
+                    <span key={i} className="glass-card-mid px-4 py-2 rounded-full text-sm text-brand-cream">
+                      {destaque}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Editorial Line */}
+              <div className="glass-card rounded-2xl border border-white/5 p-7">
+                <h3 className="font-semibold text-brand-cream mb-4">📅 Linha Editorial</h3>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-1">Frequência:</p>
+                    <p className="text-sm text-brand-cream">{resultado.plano_acao.estrategia_conteudo.linha_editorial.frequencia}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-1">Distribuição Semanal:</p>
+                    <p className="text-sm text-brand-cream">{resultado.plano_acao.estrategia_conteudo.linha_editorial.distribuicao}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-brand-muted uppercase mb-1">Orientação de Planejamento:</p>
+                    <p className="text-sm text-brand-cream">{resultado.plano_acao.estrategia_conteudo.linha_editorial.calendario}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Offer CTA */}
         <section>
@@ -351,49 +552,196 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
       </div>
 
       {/* PDF HIDDEN CONTENT FOR PRINTING ONLY */}
-      <div id="pdf-content" className="hidden bg-white text-black p-10 font-sans" style={{ width: '800px', margin: '0 auto' }}>
-        <div className="border-b-2 border-brand-pink pb-6 mb-8 flex justify-between items-end">
-          <div>
-            <h1 className="text-3xl font-black text-gray-900 mb-1">Diagnóstico Raio-X Troppa</h1>
-            <p className="text-gray-500 text-sm tracking-widest uppercase">Relatório Oficial de Perfil</p>
-          </div>
-          <div className="text-right">
-            <h2 className="text-xl font-bold text-gray-800">{nome}</h2>
-            <div className={`mt-2 text-sm font-bold px-3 py-1 rounded inline-block ${resultado.nivel_geral === 'perdido' ? 'bg-red-100 text-red-700' : resultado.nivel_geral === 'luneta' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'}`}>
-              Nota Geral: {resultado.nota_geral.toFixed(1)} / 10
+      <div id="pdf-content" className="hidden bg-white text-black font-sans" style={{ width: '100%', maxWidth: '750px', margin: '0 auto', padding: '40px 20px' }}>
+        {/* Header */}
+        <div className="border-b-2 border-brand-pink pb-8 mb-8">
+          <h1 className="text-2xl font-black text-gray-900 mb-1">Raio-X do Instagram — Diagnóstico Completo</h1>
+          <p className="text-gray-500 text-sm tracking-widest uppercase mb-6">Relatório Oficial — Troppa Digital</p>
+
+          <div className="flex justify-between items-end">
+            <div>
+              <p className="text-xs text-gray-500">Cliente:</p>
+              <p className="text-lg font-bold text-gray-800">{nome}</p>
+              {segmento && (
+                <p className="text-xs text-gray-500 mt-1">Segmento: <strong>{segmento}</strong></p>
+              )}
+            </div>
+            <div className="text-right">
+              <div className={`text-lg font-black px-4 py-3 rounded ${
+                resultado.nivel_geral === 'perdido' ? 'bg-red-100 text-red-700' :
+                resultado.nivel_geral === 'luneta' ? 'bg-yellow-100 text-yellow-700' :
+                'bg-green-100 text-green-700'
+              }`}>
+                {resultado.nota_geral.toFixed(1)}/10
+              </div>
+              <p className="text-xs text-gray-600 mt-2">{NIVEL_CONFIG[resultado.nivel_geral].label}</p>
             </div>
           </div>
         </div>
 
-        <div className="mb-8">
-          <h3 className="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-pink pl-3">Desempenho por Módulo</h3>
-          <div className="grid grid-cols-2 gap-4">
+        {/* Resultado Geral */}
+        <div className="mb-8 p-6 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+          <h2 className="font-bold text-gray-800 mb-3">Entendendo seu Resultado</h2>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            {resultado.nivel_geral === 'perdido' && "Seu perfil está como um barco à deriva, nadando contra a maré. Faltam bases sólidas (bio clara, destaques estratégicos, publicações consistentes). O resultado que está vendo reflete um perfil que ainda não tem credibilidade suficiente para vender. Os próximos 30-60 dias são críticos. Você precisa arrumar a casa urgente antes de investir em tráfego."}
+            {resultado.nivel_geral === 'luneta' && "Você consegue enxergar o objetivo (vendas e relevância) lá na frente, mas ainda está desfocado. Você já tem coisas funcionando, mas faltam ajustes finos estratégicos. Seus seguidores existem, mas faltam mecanismos para transformar essa audiência em comunidade pagante. Melhore o que já está meio certo."}
+            {resultado.nivel_geral === 'tesouro' && "Parabéns! Você está sentado em uma mina de ouro. Suas engrenagens já rodam muito bem, a audiência interage naturalmente e há sinais de vendas acontecendo. Isso não é acaso — você já fez muito certo. Hora de escalar com ofertas de maior valor, tráfego pago e comunidades VIP."}
+          </p>
+        </div>
+
+        {/* Desempenho por Módulo */}
+        <div className="mb-8 page-break-before">
+          <h2 className="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-pink pl-3">Desempenho por Módulo</h2>
+          <div className="space-y-6">
             {resultado.diagnostico_modulos.map((diag) => (
-              <div key={diag.modulo} className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold text-gray-700">{diag.titulo}</span>
-                  <span className="font-black text-lg text-brand-pink">{diag.nota.toFixed(1)}</span>
+              <div key={diag.modulo} className="bg-gray-50 border border-gray-200 p-5 rounded-lg break-inside-avoid">
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-bold text-gray-800">{diag.titulo}</h3>
+                      <span className={`text-xs font-bold px-2 py-1 rounded ${
+                        diag.nivel === 'perdido' ? 'bg-red-100 text-red-700' :
+                        diag.nivel === 'luneta' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-green-100 text-green-700'
+                      }`}>
+                        {NIVEL_CONFIG[diag.nivel].emoji} {NIVEL_CONFIG[diag.nivel].label}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-700">{diag.descricao}</p>
+                  </div>
+                  <span className="font-black text-xl text-brand-pink">{diag.nota.toFixed(1)}</span>
                 </div>
-                <p className="text-xs text-gray-500 leading-tight">{diag.descricao}</p>
+
+                {diag.recomendacoes.length > 0 && (
+                  <div className="mt-4 pt-4 border-t border-gray-300">
+                    <p className="text-xs font-bold text-gray-600 uppercase mb-3">Recomendações:</p>
+                    <ol className="space-y-2 list-decimal list-inside">
+                      {diag.recomendacoes.map((rec, i) => (
+                        <li key={i} className="text-xs text-gray-700">{rec}</li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mb-8 p-6 bg-brand-pink/5 border border-brand-pink/20 rounded-xl break-inside-avoid">
-          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">🎯 Plano de Ação Prioritário</h3>
-          <ul className="space-y-3">
+        {/* Plano de Ação */}
+        <div className="mb-8 p-6 bg-brand-pink/5 border border-brand-pink/20 rounded-lg break-inside-avoid page-break-before">
+          <h2 className="text-lg font-bold text-gray-800 mb-4">🎯 Plano de Ação Prioritário</h2>
+          <ol className="space-y-3 list-decimal list-inside">
             {resultado.plano_acao.prioridades.map((prioridade, i) => (
-              <li key={i} className="flex gap-3 text-sm text-gray-700">
-                <span className="font-bold text-brand-pink">{i + 1}.</span>
-                <span>{prioridade}</span>
-              </li>
+              <li key={i} className="text-sm text-gray-700">{prioridade}</li>
             ))}
-          </ul>
+          </ol>
         </div>
 
-        <div className="text-center text-xs text-gray-400 mt-12 pt-6 border-t border-gray-200">
-          Gerado automaticamente por <strong>Troppa Digital</strong>. www.troppadigital.com.br
+        {/* Estratégia de Conteúdo */}
+        {resultado.plano_acao.estrategia_conteudo && (
+          <div className="mb-8 page-break-before">
+            <h2 className="text-lg font-bold text-gray-800 mb-4 border-l-4 border-brand-pink pl-3">
+              🎬 Estratégia de Conteúdo{segmento && ` — ${segmento}`}
+            </h2>
+
+            {/* Stories */}
+            <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+              <h3 className="font-bold text-gray-800 mb-3">📱 Stories</h3>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <p className="font-bold text-gray-700 mb-2">Sequências Narrativas:</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    {resultado.plano_acao.estrategia_conteudo.stories.sequencias.map((seq, i) => (
+                      <li key={i}>{seq}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700 mb-2">Caixa de Perguntas:</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    {resultado.plano_acao.estrategia_conteudo.stories.caixinha_perguntas.map((cx, i) => (
+                      <li key={i}>{cx}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700 mb-2">Transformações a Mostrar:</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    {resultado.plano_acao.estrategia_conteudo.stories.transformacoes.map((t, i) => (
+                      <li key={i}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700 mb-2">Mecânicas de Interação:</p>
+                  <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    {resultado.plano_acao.estrategia_conteudo.stories.interacoes.map((int, i) => (
+                      <li key={i}>{int}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Reels */}
+            <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+              <h3 className="font-bold text-gray-800 mb-3">▶️ 5 Ideias de Reels</h3>
+              <div className="space-y-3">
+                {resultado.plano_acao.estrategia_conteudo.reels.map((reel, i) => (
+                  <div key={i} className="border-l-2 border-brand-pink pl-3">
+                    <p className="text-xs font-bold text-gray-600">{reel.formato}</p>
+                    <p className="text-sm font-bold text-gray-800">{reel.tema}</p>
+                    <p className="text-xs text-gray-700">{reel.descricao}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Feed */}
+            <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+              <h3 className="font-bold text-gray-800 mb-3">📸 5 Ideias de Posts para Feed</h3>
+              <div className="space-y-3">
+                {resultado.plano_acao.estrategia_conteudo.feed.map((post, i) => (
+                  <div key={i} className="border-l-2 border-brand-pink pl-3">
+                    <p className="text-xs font-bold text-gray-600">{post.formato}</p>
+                    <p className="text-sm font-bold text-gray-800">{post.tema}</p>
+                    <p className="text-xs text-gray-700">{post.descricao}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Highlights */}
+            <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+              <h3 className="font-bold text-gray-800 mb-3">⭐ Sugestões de Destaques</h3>
+              <p className="text-sm text-gray-700">{resultado.plano_acao.estrategia_conteudo.destaques.join(', ')}</p>
+            </div>
+
+            {/* Linha Editorial */}
+            <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+              <h3 className="font-bold text-gray-800 mb-3">📅 Linha Editorial</h3>
+              <div className="space-y-2 text-sm">
+                <div>
+                  <p className="font-bold text-gray-700">Frequência:</p>
+                  <p className="text-gray-700">{resultado.plano_acao.estrategia_conteudo.linha_editorial.frequencia}</p>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700">Distribuição Semanal:</p>
+                  <p className="text-gray-700">{resultado.plano_acao.estrategia_conteudo.linha_editorial.distribuicao}</p>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700">Orientação de Planejamento:</p>
+                  <p className="text-gray-700">{resultado.plano_acao.estrategia_conteudo.linha_editorial.calendario}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Footer */}
+        <div className="text-center text-xs text-gray-400 mt-12 pt-6 border-t border-gray-300 page-break-before">
+          <p>Gerado automaticamente por <strong>Troppa Digital</strong></p>
+          <p className="mt-1">www.troppadigital.com.br | {new Date().toLocaleDateString('pt-BR')}</p>
         </div>
       </div>
     </div>

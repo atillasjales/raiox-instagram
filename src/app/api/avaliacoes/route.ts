@@ -9,6 +9,7 @@ import { z } from 'zod'
 const schema = z.object({
   lead_id: z.string().uuid(),
   segmento: z.string().optional(),
+  nome: z.string().optional(),
   notas: z.object({
     perfil: z.number().min(1).max(10),
     posicionamento: z.number().min(1).max(10),
@@ -22,18 +23,19 @@ const schema = z.object({
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { lead_id, segmento, notas } = schema.parse(body)
+    const { lead_id, segmento, nome, notas } = schema.parse(body)
 
     const nota_geral = calcularNotaGeral(notas)
     const supabase = createServerSupabase()
 
     // Invocar IA para texto personalizado
-    const resultadoIA = await gerarDiagnosticoComIA(notas as NotasModulo, segmento || '')
+    const resultadoIA = await gerarDiagnosticoComIA(notas as NotasModulo, segmento || '', nome)
 
     // Salva na JSONB
     const notasToSave = {
       ...notas,
-      _resultado_ia: resultadoIA
+      _resultado_ia: resultadoIA,
+      _segmento: segmento || ''
     }
 
     // Save evaluation
