@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface Props {
   onCTA: () => void
 }
@@ -47,10 +49,17 @@ export default function FinalCTA({ onCTA }: Props) {
 
         {/* Troppa branding */}
         <div className="mt-20 pt-10 border-t border-white/5">
+          <div className="flex justify-center mb-3">
+            <Image
+              src="/logos/logo-white.png"
+              alt="Troppa Digital"
+              width={120}
+              height={40}
+              quality={95}
+            />
+          </div>
           <p className="text-brand-muted text-xs">
-            Uma ferramenta gratuita da{' '}
-            <span className="text-brand-cream font-semibold">Troppa Digital</span>
-            {' '}— 12 anos transformando negócios no digital.
+            Uma ferramenta gratuita — 12 anos transformando negócios no digital.
           </p>
         </div>
       </div>

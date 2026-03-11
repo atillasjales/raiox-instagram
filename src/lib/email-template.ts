@@ -5,7 +5,8 @@ export function gerarEmailResultado(
   nome: string,
   resultado: ResultadoDiagnostico,
   avaliacaoId: string,
-  appUrl: string
+  appUrl: string,
+  instagramProfile?: string
 ): string {
   const nivelConfig = NIVEL_CONFIG[resultado.nivel_geral]
   const top3Modulos = resultado.diagnostico_modulos.slice(0, 3)
@@ -44,8 +45,9 @@ export function gerarEmailResultado(
 <body>
   <div class="container">
     <div class="header">
-      <div class="logo">Troppa Digital</div>
+      <img src="${appUrl}/logos/logo-white.png" alt="Troppa Digital" width="140" style="display:block;margin:0 auto 24px;" />
       <div class="title">Seu Raio-X do Instagram<br>está pronto, ${nome}!</div>
+      ${instagramProfile ? `<div style="color: #FF2D8B; font-size: 14px; margin-top: 12px; font-weight: 600;">Perfil analisado: ${instagramProfile}</div>` : ''}
     </div>
 
     <div class="score-box">
@@ -82,7 +84,8 @@ export function gerarEmailResultado(
     </div>
 
     <div class="footer">
-      <p>Troppa Digital — 12 anos transformando negócios no digital</p>
+      <img src="${appUrl}/logos/logo-white.png" alt="Troppa Digital" width="100" style="display:block;margin:0 auto 8px;opacity:0.7;" />
+      <p>12 anos transformando negócios no digital</p>
       <p style="margin-top: 8px;">Você recebeu este email porque fez o Raio-X do Instagram.</p>
     </div>
   </div>

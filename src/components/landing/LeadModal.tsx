@@ -53,6 +53,9 @@ export default function LeadModal({ isOpen, onClose }: Props) {
       sessionStorage.setItem('lead_id', json.id)
       sessionStorage.setItem('lead_nome', data.nome)
       sessionStorage.setItem('lead_segmento', data.segmento)
+      if (data.instagram_profile) {
+        sessionStorage.setItem('lead_instagram', data.instagram_profile)
+      }
 
       onClose()
       router.push('/quiz')

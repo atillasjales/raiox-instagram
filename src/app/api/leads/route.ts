@@ -36,26 +36,15 @@ export async function POST(req: NextRequest) {
 
     const supabase = createServerSupabase()
 
-    // Check if lead already exists
-    const { data: existing } = await supabase
-      .from('leads')
-      .select('id')
-      .eq('email', data.email)
-      .single()
-
-    if (existing) {
-      return NextResponse.json({ id: existing.id })
-    }
-
     const { data: lead, error } = await supabase
       .from('leads')
-      .insert({
+      .upsert({
         nome: data.nome,
         email: data.email,
         telefone: data.telefone,
         segmento: data.segmento || null,
         instagram_profile: data.instagram_profile ? normalizeInstagramProfile(data.instagram_profile) : null,
-      })
+      }, { onConflict: 'email' })
       .select('id')
       .single()
 

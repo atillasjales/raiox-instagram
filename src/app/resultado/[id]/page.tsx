@@ -26,6 +26,7 @@ export default async function ResultadoPage({ params }: Props) {
 
   const nome = (avaliacao.leads as any)?.nome || 'Visitante'
   const segmento = notasRaw._segmento || ''
+  const instagram = avaliacao.instagram_profile || ''
 
-  return <ResultadoClient resultado={resultado} nome={nome} avaliacaoId={params.id} segmento={segmento} />
+  return <ResultadoClient resultado={resultado} nome={nome} avaliacaoId={params.id} segmento={segmento} instagram={instagram} />
 }

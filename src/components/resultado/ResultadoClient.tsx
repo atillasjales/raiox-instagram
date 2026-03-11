@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { ResultadoDiagnostico, NivelModulo } from '@/types'
 import { NIVEL_CONFIG, MODULOS } from '@/lib/quiz-data'
 import {
@@ -17,9 +18,10 @@ interface Props {
   nome: string
   avaliacaoId: string
   segmento: string
+  instagram?: string
 }
 
-export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento }: Props) {
+export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento, instagram }: Props) {
   const [activeModuleInfo, setActiveModuleInfo] = useState<{
     titulo: string
     nota: number
@@ -88,9 +90,15 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-xs text-brand-muted uppercase tracking-widest mb-4">
-            Raio-X do Instagram — Troppa Digital
-          </p>
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/logos/logo-black.png"
+              alt="Troppa Digital"
+              width={140}
+              height={46}
+              quality={95}
+            />
+          </div>
 
           <h1 className="font-display font-black text-4xl md:text-5xl text-brand-cream mb-6 leading-tight">
             Diagnóstico de <em style={{ color: nivelConfig.cor }}>{nome}</em>

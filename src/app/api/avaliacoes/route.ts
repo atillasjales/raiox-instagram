@@ -9,6 +9,7 @@ import { z } from 'zod'
 const schema = z.object({
   lead_id: z.string().uuid(),
   segmento: z.string().optional(),
+  instagram_profile: z.string().optional(),
   nome: z.string().optional(),
   notas: z.object({
     perfil: z.number().min(1).max(10),
@@ -23,7 +24,7 @@ const schema = z.object({
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { lead_id, segmento, nome, notas } = schema.parse(body)
+    const { lead_id, segmento, instagram_profile, nome, notas } = schema.parse(body)
 
     const nota_geral = calcularNotaGeral(notas)
     const supabase = createServerSupabase()
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
       .from('avaliacoes')
       .insert({
         lead_id,
+        instagram_profile: instagram_profile || null,
         notas: notasToSave,
         nota_geral,
       })
@@ -61,7 +63,7 @@ export async function POST(req: NextRequest) {
     // Send email asynchronously (don't block the response)
     if (lead?.email) {
       const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-      const htmlEmail = gerarEmailResultado(lead.nome, resultadoIA, avaliacao.id, appUrl)
+      const htmlEmail = gerarEmailResultado(lead.nome, resultadoIA, avaliacao.id, appUrl, instagram_profile)
 
       try {
         const { Resend } = await import('resend')

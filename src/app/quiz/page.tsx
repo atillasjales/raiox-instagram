@@ -18,12 +18,14 @@ export default function QuizPage() {
   const [leadId, setLeadId] = useState<string | null>(null)
   const [leadNome, setLeadNome] = useState<string>('')
   const [leadSegmento, setLeadSegmento] = useState<string>('')
+  const [leadInstagram, setLeadInstagram] = useState<string>('')
   const [erro, setErro] = useState('')
 
   useEffect(() => {
     const id = sessionStorage.getItem('lead_id')
     const nome = sessionStorage.getItem('lead_nome')
     const segmento = sessionStorage.getItem('lead_segmento')
+    const instagram = sessionStorage.getItem('lead_instagram')
     if (!id) {
       router.replace('/')
       return
@@ -31,6 +33,7 @@ export default function QuizPage() {
     setLeadId(id)
     setLeadNome(nome || 'você')
     setLeadSegmento(segmento || 'Não informado')
+    setLeadInstagram(instagram || '')
   }, [router])
 
   function handleRespostasModulo(moduloId: ModuloId, notasModulo: Record<number, number>) {
@@ -57,7 +60,13 @@ export default function QuizPage() {
       const res = await fetch('/api/avaliacoes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lead_id: leadId, segmento: leadSegmento, nome: leadNome, notas }),
+        body: JSON.stringify({
+          lead_id: leadId,
+          segmento: leadSegmento,
+          instagram_profile: leadInstagram,
+          nome: leadNome,
+          notas
+        }),
       })
       const json = await res.json()
       if (!res.ok) throw new Error(json.error)
@@ -65,6 +74,7 @@ export default function QuizPage() {
       sessionStorage.removeItem('lead_id')
       sessionStorage.removeItem('lead_nome')
       sessionStorage.removeItem('lead_segmento')
+      sessionStorage.removeItem('lead_instagram')
       router.push(`/resultado/${json.id}`)
     } catch (err: any) {
       setErro('Erro ao processar diagnóstico. Tente novamente.')

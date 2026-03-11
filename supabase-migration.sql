@@ -25,16 +25,18 @@ create index if not exists leads_instagram_profile_idx on leads(instagram_profil
 
 -- ─── Avaliações ──────────────────────────────────────────────
 create table if not exists avaliacoes (
-  id          uuid primary key default gen_random_uuid(),
-  lead_id     uuid not null references leads(id) on delete cascade,
-  notas       jsonb not null,
-  nota_geral  numeric(4,2) not null,
-  created_at  timestamptz not null default now()
+  id                  uuid primary key default gen_random_uuid(),
+  lead_id             uuid not null references leads(id) on delete cascade,
+  instagram_profile   varchar(255), -- Snapshot of the profile at the time of evaluation
+  notas               jsonb not null,
+  nota_geral          numeric(4,2) not null,
+  created_at          timestamptz not null default now()
 );
 
 create index if not exists avaliacoes_lead_id_idx on avaliacoes(lead_id);
 create index if not exists avaliacoes_created_at_idx on avaliacoes(created_at desc);
 create index if not exists avaliacoes_nota_geral_idx on avaliacoes(nota_geral);
+create index if not exists avaliacoes_instagram_profile_idx on avaliacoes(instagram_profile);
 
 -- ─── Row Level Security ───────────────────────────────────────
 -- Disable RLS for server-side access via service role
@@ -48,10 +50,11 @@ create or replace view v_leads_com_avaliacao as
     l.nome,
     l.email,
     l.telefone,
-    l.instagram_profile,
+    l.instagram_profile as lead_profile_atual,
     l.segmento,
     l.created_at as lead_criado_em,
     a.id as avaliacao_id,
+    a.instagram_profile as profile_avaliado,
     a.nota_geral,
     a.notas,
     a.created_at as avaliacao_criada_em
