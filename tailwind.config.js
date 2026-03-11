@@ -9,9 +9,11 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          black: '#0A0A0A',
-          orange: '#FF5C1A',
-          'orange-light': '#FF7A42',
+          black: '#000000',
+          pink: '#FF2D8B',
+          'pink-light': '#FF5CAD',
+          purple: '#8B2DFF',
+          'purple-light': '#A55CFF',
           gold: '#E8B84B',
           cream: '#F5EFE0',
           'cream-dark': '#E8DECA',
@@ -51,8 +53,8 @@ module.exports = {
           '100%': { transform: 'translateX(0)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(255,92,26,0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(255,92,26,0.6)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(255,45,139,0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(255,45,139,0.6)' },
         },
         scan: {
           '0%': { top: '0%' },
