@@ -33,6 +33,7 @@ export type Respostas = Record<ModuloId, Record<number, number>>
 
 // ─── Avaliação ───────────────────────────────────────────────────────────────
 export interface NotasModulo {
+  [key: string]: number
   perfil: number
   posicionamento: number
   identidade_visual: number
