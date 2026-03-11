@@ -3,14 +3,7 @@
   "buildCommand": "next build",
   "outputDirectory": ".next",
   "installCommand": "npm install",
-  "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@supabase-url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase-anon-key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase-service-role-key",
-    "RESEND_API_KEY": "@resend-api-key",
-    "RESEND_FROM_EMAIL": "@resend-from-email",
-    "NEXT_PUBLIC_APP_URL": "@app-url",
-    "NEXT_PUBLIC_WHATSAPP_NUMBER": "@whatsapp-number"
-  },
-  "regions": ["gru1"]
+  "regions": [
+    "gru1"
+  ]
 }
