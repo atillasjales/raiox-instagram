@@ -9,16 +9,19 @@ create extension if not exists "pgcrypto";
 
 -- ─── Leads ───────────────────────────────────────────────────
 create table if not exists leads (
-  id          uuid primary key default gen_random_uuid(),
-  nome        text not null,
-  email       text not null unique,
-  telefone    text not null,
-  created_at  timestamptz not null default now()
+  id                  uuid primary key default gen_random_uuid(),
+  nome                text not null,
+  email               text not null unique,
+  telefone            text not null,
+  instagram_profile   varchar(255),
+  segmento            varchar(255),
+  created_at          timestamptz not null default now()
 );
 
 -- Index for fast lookups
 create index if not exists leads_email_idx on leads(email);
 create index if not exists leads_created_at_idx on leads(created_at desc);
+create index if not exists leads_instagram_profile_idx on leads(instagram_profile);
 
 -- ─── Avaliações ──────────────────────────────────────────────
 create table if not exists avaliacoes (
@@ -45,6 +48,8 @@ create or replace view v_leads_com_avaliacao as
     l.nome,
     l.email,
     l.telefone,
+    l.instagram_profile,
+    l.segmento,
     l.created_at as lead_criado_em,
     a.id as avaliacao_id,
     a.nota_geral,

@@ -15,6 +15,7 @@ const schema = z.object({
     .min(10, 'Digite um telefone válido')
     .regex(/^[\d\s\(\)\-\+]+$/, 'Telefone inválido'),
   segmento: z.string().min(2, 'Selecione ou digite seu segmento'),
+  instagram_profile: z.string().optional(),
 })
 
 interface Props {
@@ -190,6 +191,22 @@ export default function LeadModal({ isOpen, onClose }: Props) {
               {errors.segmento && (
                 <p className="text-red-400 text-xs mt-1">{errors.segmento.message}</p>
               )}
+            </div>
+
+            {/* Instagram */}
+            <div>
+              <label className="block text-xs font-medium text-brand-muted uppercase tracking-wider mb-2">
+                Instagram (Opcional)
+              </label>
+              <input
+                {...register('instagram_profile')}
+                type="text"
+                placeholder="@seuusuario ou instagram.com/seuusuario"
+                className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-pink transition-colors"
+              />
+              <p className="text-brand-muted text-xs mt-1">
+                Use @usuario ou a URL completa do seu perfil
+              </p>
             </div>
 
             {error && (

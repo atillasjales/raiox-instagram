@@ -360,21 +360,53 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
           <h2 className="font-display font-bold text-2xl text-brand-cream mb-6">
             🗺️ Seu plano de ação prioritário
           </h2>
-          <div className="glass-card rounded-2xl border border-white/5 p-7">
-            <div className="space-y-3">
-              {resultado.plano_acao.prioridades.map((prioridade, i) => (
-                <div
-                  key={i}
-                  className="flex gap-4 p-4 glass-card-mid rounded-xl border-l-2 border-brand-pink"
-                >
-                  <div className="flex-none w-7 h-7 rounded-full bg-brand-pink/20 text-brand-pink text-xs font-bold flex items-center justify-center">
-                    {i + 1}
+          {resultado.plano_acao.plano_execucao ? (
+            <div className="space-y-8">
+              {([
+                { key: 'stories', label: '📱 Stories', items: resultado.plano_acao.plano_execucao.stories },
+                { key: 'reels', label: '▶️ Reels', items: resultado.plano_acao.plano_execucao.reels },
+                { key: 'posts', label: '📸 Posts', items: resultado.plano_acao.plano_execucao.posts },
+                { key: 'carrosseis', label: '🃏 Carrosséis', items: resultado.plano_acao.plano_execucao.carrosseis },
+              ] as const).map(({ key, label, items }) => (
+                <div key={key} className="glass-card rounded-2xl border border-white/5 p-7">
+                  <h3 className="font-semibold text-brand-cream mb-5 text-base">{label}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {items.map((item, i) => (
+                      <div key={i} className="glass-card-mid rounded-xl p-5 space-y-3 border border-white/5">
+                        <div className="flex items-start gap-2">
+                          <span className="text-brand-pink text-sm mt-0.5 flex-none">💡</span>
+                          <p className="text-sm text-brand-cream font-semibold leading-snug">{item.ideia}</p>
+                        </div>
+                        <div className="border-t border-white/10 pt-3 space-y-2">
+                          <p className="text-xs font-semibold text-brand-muted uppercase tracking-wider">Copy sugerida:</p>
+                          <p className="text-xs text-brand-cream/80 italic leading-relaxed">"{item.copy}"</p>
+                        </div>
+                        <div className="border-t border-white/10 pt-3">
+                          <p className="text-xs text-brand-pink font-semibold">👉 CTA: <span className="text-brand-cream/80 font-normal">{item.cta}</span></p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-sm text-brand-cream/90 leading-relaxed">{prioridade}</p>
                 </div>
               ))}
             </div>
-          </div>
+          ) : (
+            <div className="glass-card rounded-2xl border border-white/5 p-7">
+              <div className="space-y-3">
+                {resultado.plano_acao.prioridades.map((prioridade, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-4 p-4 glass-card-mid rounded-xl border-l-2 border-brand-pink"
+                  >
+                    <div className="flex-none w-7 h-7 rounded-full bg-brand-pink/20 text-brand-pink text-xs font-bold flex items-center justify-center">
+                      {i + 1}
+                    </div>
+                    <p className="text-sm text-brand-cream/90 leading-relaxed">{prioridade}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
 
         {/* Content Strategy */}
@@ -582,11 +614,45 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
         {/* Resultado Geral */}
         <div className="mb-8 p-6 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
           <h2 className="font-bold text-gray-800 mb-3">Entendendo seu Resultado</h2>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            {resultado.nivel_geral === 'perdido' && "Seu perfil está como um barco à deriva, nadando contra a maré. Faltam bases sólidas (bio clara, destaques estratégicos, publicações consistentes). O resultado que está vendo reflete um perfil que ainda não tem credibilidade suficiente para vender. Os próximos 30-60 dias são críticos. Você precisa arrumar a casa urgente antes de investir em tráfego."}
-            {resultado.nivel_geral === 'luneta' && "Você consegue enxergar o objetivo (vendas e relevância) lá na frente, mas ainda está desfocado. Você já tem coisas funcionando, mas faltam ajustes finos estratégicos. Seus seguidores existem, mas faltam mecanismos para transformar essa audiência em comunidade pagante. Melhore o que já está meio certo."}
-            {resultado.nivel_geral === 'tesouro' && "Parabéns! Você está sentado em uma mina de ouro. Suas engrenagens já rodam muito bem, a audiência interage naturalmente e há sinais de vendas acontecendo. Isso não é acaso — você já fez muito certo. Hora de escalar com ofertas de maior valor, tráfego pago e comunidades VIP."}
-          </p>
+          <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
+            {resultado.nivel_geral === 'perdido' && (
+              <>
+                <p><strong>🔴 Modo Perdido</strong> — Seu perfil está como um barco à deriva, nadando contra a maré. Isso significa que faltam <strong>bases sólidas</strong> (bio clara, destaques estratégicos, publicações consistentes) e o pouco tráfego que chega acaba indo embora sem converter.</p>
+                <p>O resultado que está vendo reflete um perfil que ainda não tem credibilidade suficiente para vender. A boa notícia? Isso é <strong>totalmente reversível</strong>. Os próximos 30-60 dias são críticos.</p>
+                <p><strong>O que fazer:</strong> Você precisa arrumar a casa urgente antes de investir em tráfego. Foco em estrutura (perfil + destaques), diferenciação clara (por que alguém deveria seguir você?) e consistência na publicação.</p>
+                {segmento && <p><em>Para um negócio de {segmento}, isso significa que faltam sinais de autoridade e confiabilidade que clientes desse mercado buscam.</em></p>}
+              </>
+            )}
+            {resultado.nivel_geral === 'luneta' && (
+              <>
+                <p><strong>🟡 Modo Luneta</strong> — Você consegue enxergar o objetivo (vendas e relevância) lá na frente, mas ainda está desfocado. Isso significa que você <strong>já tem coisas funcionando</strong>, mas faltam os ajustes finos estratégicos para disparar.</p>
+                <p>Seus seguidores existem, mas faltam mecanismos para transformar essa audiência em comunidade pagante. Você tem o potencial, mas precisa afinar a estratégia.</p>
+                <p><strong>O que fazer:</strong> Não comece do zero. Melhore o que já está meio certo. Ajuste a estratégia de conteúdo, potencialize a interação com audiência, crie ofertas mais claras e teste resultados com tráfego pago.</p>
+                {segmento && <p><em>Para um negócio de {segmento}, você está na faixa que permite crescimento acelerado com estratégia certa.</em></p>}
+              </>
+            )}
+            {resultado.nivel_geral === 'tesouro' && (
+              <>
+                <p><strong>🟢 Modo Tesouro</strong> — Parabéns! Você está sentado em uma mina de ouro 🎯. Suas engrenagens já rodam muito bem, a audiência interage naturalmente e há sinais de vendas acontecendo.</p>
+                <p>Isso <strong>não é acaso</strong> — você já fez muito certo. Bio, conteúdo, engajamento e posicionamento estão alinhados. O que falta é escala e maximização.</p>
+                <p><strong>O que fazer:</strong> Hora de <strong>escalar</strong>. Crie ofertas de maior valor, use tráfego pago para amplificar o que já funciona, crie produtos/programas para monetizar melhor a audiência, lance colaborações estratégicas.</p>
+                {segmento && <p><em>Para um negócio de {segmento}, você está pronto para lançar serviços premium e construir comunidades VIP.</em></p>}
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Radar Chart */}
+        <div className="mb-8 break-inside-avoid">
+          <h2 className="text-lg font-bold text-gray-800 mb-4 border-l-4 border-pink-500 pl-3">Mapa do Instagram</h2>
+          <div style={{ width: '100%', height: 280 }}>
+            <RadarChart data={radarData} width={680} height={280} cx="50%" cy="50%" outerRadius={100}>
+              <PolarGrid stroke="#e5e7eb" />
+              <PolarAngleAxis dataKey="subject" tick={{ fill: '#374151', fontSize: 11, fontWeight: 600 }} />
+              <PolarRadiusAxis angle={90} domain={[0, 10]} tick={{ fill: '#9ca3af', fontSize: 9 }} tickCount={6} />
+              <Radar name="Nota" dataKey="nota" stroke="#FF2D8B" fill="#FF2D8B" fillOpacity={0.3} strokeWidth={2} />
+            </RadarChart>
+          </div>
         </div>
 
         {/* Desempenho por Módulo */}
@@ -628,13 +694,39 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
         </div>
 
         {/* Plano de Ação */}
-        <div className="mb-8 p-6 bg-brand-pink/5 border border-brand-pink/20 rounded-lg break-inside-avoid page-break-before">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">🎯 Plano de Ação Prioritário</h2>
-          <ol className="space-y-3 list-decimal list-inside">
-            {resultado.plano_acao.prioridades.map((prioridade, i) => (
-              <li key={i} className="text-sm text-gray-700">{prioridade}</li>
-            ))}
-          </ol>
+        <div className="mb-8 page-break-before">
+          <h2 className="text-lg font-bold text-gray-800 mb-4 border-l-4 border-pink-500 pl-3">🎯 Plano de Ação Prioritário</h2>
+          {resultado.plano_acao.plano_execucao ? (
+            <div className="space-y-5">
+              {([
+                { key: 'stories', label: '📱 Stories', items: resultado.plano_acao.plano_execucao.stories },
+                { key: 'reels', label: '▶️ Reels', items: resultado.plano_acao.plano_execucao.reels },
+                { key: 'posts', label: '📸 Posts', items: resultado.plano_acao.plano_execucao.posts },
+                { key: 'carrosseis', label: '🃏 Carrosséis', items: resultado.plano_acao.plano_execucao.carrosseis },
+              ] as const).map(({ key, label, items }) => (
+                <div key={key} className="mb-4">
+                  <h3 className="font-bold text-gray-800 mb-3 border-b border-gray-200 pb-2">{label}</h3>
+                  <div className="space-y-3">
+                    {items.map((item, i) => (
+                      <div key={i} className="p-4 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+                        <p className="text-sm font-bold text-gray-800 mb-2">💡 {item.ideia}</p>
+                        <p className="text-xs text-gray-600 italic mb-2">📝 Copy: "{item.copy}"</p>
+                        <p className="text-xs text-pink-700 font-semibold">👉 CTA: {item.cta}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="p-6 bg-gray-50 border border-gray-200 rounded-lg break-inside-avoid">
+              <ol className="space-y-3 list-decimal list-inside">
+                {resultado.plano_acao.prioridades.map((prioridade, i) => (
+                  <li key={i} className="text-sm text-gray-700">{prioridade}</li>
+                ))}
+              </ol>
+            </div>
+          )}
         </div>
 
         {/* Estratégia de Conteúdo */}

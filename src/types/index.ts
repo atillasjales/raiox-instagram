@@ -4,6 +4,8 @@ export interface Lead {
   nome: string
   email: string
   telefone: string
+  instagram_profile?: string
+  segmento?: string
   created_at: string
 }
 
@@ -88,11 +90,25 @@ export interface EstrategiaConteudo {
   }
 }
 
+export interface ItemExecucao {
+  ideia: string
+  copy: string
+  cta: string
+}
+
+export interface PlanoExecucao {
+  stories: ItemExecucao[]
+  reels: ItemExecucao[]
+  posts: ItemExecucao[]
+  carrosseis: ItemExecucao[]
+}
+
 export interface PlanoAcao {
   prioridades: string[]
   oferta_recomendada: 'ativacao' | 'assessoria' | 'ambos'
   mensagem_cta: string
   estrategia_conteudo?: EstrategiaConteudo
+  plano_execucao?: PlanoExecucao
 }
 
 // ─── Form ─────────────────────────────────────────────────────────────────────
@@ -101,4 +117,5 @@ export interface LeadFormData {
   email: string
   telefone: string
   segmento: string
+  instagram_profile?: string
 }

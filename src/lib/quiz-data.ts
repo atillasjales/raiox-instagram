@@ -9,63 +9,63 @@ export const MODULOS: Modulo[] = [
     perguntas: [
       {
         id: 1,
-        texto: 'Sua foto de perfil transmite clareza e profissionalismo para a sua marca?',
-        apoio: 'A foto é o primeiro contato do cliente. Ela não deve estar escura, desfocada ou ser ilegível no celular.',
-        exemplo: 'Para pessoas: rosto iluminado com fundo neutro. Para empresas: logo limpo, sem textos miúdos.'
+        texto: 'Sua foto de perfil transmite clareza e profissionalismo?',
+        apoio: 'A foto é o primeiro contato visual com o cliente. Ela precisa estar bem iluminada, nítida e ser legível no celular.',
+        exemplo: 'Para pessoas físicas: rosto iluminado com fundo neutro. Para empresas: logo limpo e legível sem muitos detalhes.'
       },
       {
         id: 2,
-        texto: 'A bio representa bem seus serviços, marca e conteúdo?',
-        apoio: 'Sua biografia precisa ser um "elevador pitch" de 3 linhas dizendo exatamente o que você faz.',
-        exemplo: 'Ex: "Ajudo mulheres empreendedoras a faturarem +10k no Instagram" ao invés de frases motivacionais soltas.'
+        texto: 'Sua bio descreve bem o que você oferece?',
+        apoio: 'A bio funciona como um "elevador pitch" — deve dizer em 2 a 3 linhas exatamente o que você faz e para quem.',
+        exemplo: 'Exemplo: "Ajudo mulheres empreendedoras a faturarem mais no Instagram" — claro e direto, não motivacional.'
       },
       {
         id: 3,
         texto: 'Seu nome de usuário (@) é fácil de memorizar e encontrar?',
-        apoio: 'Usernames com muitos números, underlines ou pontos dificultam que as pessoas te achem ou te marquem.',
-        exemplo: 'Prefira @joaodasilva ao invés de @joao_da_silva_123_oficial.'
+        apoio: 'Nomes com muitos números, underscores ou pontos dificultam para as pessoas te acharem ou te marcarem.',
+        exemplo: 'Prefira @joaodasilva em vez de @joao_da_silva_123_oficial.'
       },
       {
         id: 4,
-        texto: 'O nome em negrito traz sua especialidade ou nome + especialidade?',
-        apoio: 'O "Nome" em negrito é usado pelo mecanismo de busca do Instagram (SEO). Não repita seu @ ali.',
-        exemplo: 'Se o @ é @dra_ana, o nome em negrito pode ser "Ana Silva | Dentista SP".'
+        texto: 'O nome em negrito (abaixo do @) traz sua especialidade?',
+        apoio: 'O Instagram usa esse nome para busca (SEO). Não repita seu @, use nome + especialidade em vez disso.',
+        exemplo: 'Se o @ é @dra_ana, coloque "Ana Silva | Dentista em São Paulo" como nome em negrito.'
       },
       {
         id: 5,
-        texto: 'A bio deixa claro para quem você oferece seus produtos/serviços?',
-        apoio: 'O seu público-alvo precisa se reconhecer assim que lê as primeiras palavras do seu perfil.',
-        exemplo: 'Se você vende moda Plus Size, deixe isso explícito ao invés de colocar apenas "Loja de Roupas".'
+        texto: 'Fica claro para quem você oferece seus produtos ou serviços?',
+        apoio: 'O cliente ideal precisa se reconhecer assim que lê as primeiras palavras da sua bio.',
+        exemplo: 'Se vende moda Plus Size, deixe explícito: "Roupas para mulheres plus size" — não apenas "Loja de Roupas".'
       },
       {
         id: 6,
         texto: 'Sua bio é persuasiva o suficiente para converter visitante em seguidor?',
-        apoio: 'As pessoas te seguem buscando algum benefício. A promessa de transformação atrai o seguidor certo.',
-        exemplo: 'Ex: "Dicas de constância na academia", que mostra o que ele ganha ao te seguir.'
+        apoio: 'As pessoas seguem quem oferece benefício. Uma promessa clara de resultado atrai o público certo.',
+        exemplo: 'Exemplo: "Aprenda técnicas de constância na academia" — mostra o ganho concreto para quem seguir.'
       },
       {
         id: 7,
-        texto: 'Seu perfil tem todas as formas de contato (email, telefone, botão de ação)?',
-        apoio: 'O cliente não pode ter dificuldade de falar com você. O Instagram oferece botões nativos para contatos.',
-        exemplo: 'Ter o botão "WhatsApp" ou "E-mail" configurado diretamente nas opções de perfil empresarial.'
+        texto: 'Seu perfil tem todas as formas de contato (email, telefone, WhatsApp)?',
+        apoio: 'Não deixe o cliente com dificuldade para falar com você. O Instagram oferece botões de contato nativos.',
+        exemplo: 'Configure os botões "WhatsApp", "E-mail" ou "Ligar" nas opções de perfil empresarial.'
       },
       {
         id: 8,
-        texto: 'Existe uma chamada para ação clara que leva ao link da bio?',
-        apoio: 'A última linha da sua bio deve instruir o usuário (CTA) a clicar no link logo abaixo dela.',
-        exemplo: 'Ex: "Agende sua consultoria aqui 👇" + o link em azul.'
+        texto: 'Existe uma chamada para ação clara que direciona para o link da bio?',
+        apoio: 'A última linha da bio deve instruir o usuário a clicar no link logo abaixo (CTA clara).',
+        exemplo: 'Exemplo: "Agende sua consultoria aqui 👇" seguido do link em azul.'
       },
       {
         id: 9,
-        texto: 'Seus destaques são usados de forma estratégica (não apenas fotos aleatórias)?',
-        apoio: 'Destaques funcionam como o "menu" do seu site. Devem tirar as principais dúvidas do cliente.',
-        exemplo: 'Criar destaques padronizados como: "Quem sou", "Serviços", "Depoimentos" e "Dúvidas".'
+        texto: 'Seus destaques são estratégicos e bem organizados?',
+        apoio: 'Destaques funcionam como um "menu" do seu perfil. Devem responder às principais dúvidas do cliente.',
+        exemplo: 'Crie destaques nomeados: "Quem Sou", "Serviços", "Depoimentos" e "Dúvidas Frequentes".'
       },
       {
         id: 10,
-        texto: 'Alguém que nunca te viu entende em 5 segundos o que você oferece?',
-        apoio: 'O visitante decide se fica ou vai embora na velocidade de um piscar de olhos. A compreensão deve ser instantânea.',
-        exemplo: 'Testar pedir pra um desconhecido olhar seu perfil por 5 segundos e perguntar o que você vende.'
+        texto: 'Um visitante entende em 5 segundos o que você oferece?',
+        apoio: 'O visitante decide se fica ou sai em um piscar de olhos. A compreensão precisa ser instantânea.',
+        exemplo: 'Teste: peça a um desconhecido olhar seu perfil por 5 segundos e diga o que você vende.'
       },
     ],
   },
@@ -77,63 +77,63 @@ export const MODULOS: Modulo[] = [
     perguntas: [
       {
         id: 1,
-        texto: 'Alguém que não te conhece consegue identificar seu diferencial só pelo perfil?',
-        apoio: 'Por que o cliente deve escolher você e não a aba do concorrente ao lado? Isso é o diferencial.',
-        exemplo: 'Ex: Seu diferencial pode ser o atendimento express (entregas em 2h), e isso deve estar em evidência.'
+        texto: 'Um visitante consegue identificar seu diferencial só olhando o perfil?',
+        apoio: 'Por que o cliente deve escolher você e não o concorrente? Esse é o diferencial que precisa aparecer.',
+        exemplo: 'Se oferece atendimento express (entrega em 2h), deixe isso em evidência no perfil.'
       },
       {
         id: 2,
-        texto: 'Você emite opiniões claras sobre assuntos do seu segmento?',
-        apoio: 'Marcas fortes têm voz forte. Ter opinião ajuda a eliminar clientes errados e atrair os fãs certos.',
-        exemplo: 'Se você é Nutricionista, falar abertamente se defende ou não a dieta flexível.'
+        texto: 'Você compartilha opiniões claras sobre assuntos do seu segmento?',
+        apoio: 'Marcas fortes têm voz forte. Ter opinião ajuda a afastar clientes errados e atrair os certos.',
+        exemplo: 'Se é nutricionista, compartilhe abertamente sua visão: você apoia ou não dieta flexível?'
       },
       {
         id: 3,
-        texto: 'As pessoas chegam com perguntas relacionadas ao que você realmente vende?',
-        apoio: 'O alinhamento do público com a venda ocorre quando seu posicionamento é cirúrgico.',
-        exemplo: 'Se você vende terapia cognitiva, não adianta receber directs apenas perguntando sobre psicanálise.'
+        texto: 'As pessoas chegam com dúvidas relacionadas ao que você realmente vende?',
+        apoio: 'Quando o posicionamento é claro, os clientes que chegam estão alinhados com seu negócio.',
+        exemplo: 'Se oferece terapia cognitiva, receba perguntas sobre isso — não sobre psicanálise.'
       },
       {
         id: 4,
-        texto: 'Você defende uma causa ou bandeira de forma clara no seu conteúdo?',
-        apoio: 'A bandeira é a crença máxima do seu negócio no mercado. Causa conexão emocional.',
+        texto: 'Você defende uma causa ou bandeira clara no seu conteúdo?',
+        apoio: 'Uma bandeira é a crença central do seu negócio. Gera conexão emocional com o público.',
         exemplo: 'A Apple defende "pense diferente"; uma loja de roupas pode defender "conforto de todos os corpos".'
       },
       {
         id: 5,
-        texto: 'Seu posicionamento gera conexão imediata do público com sua marca?',
-        apoio: 'O usuário não compra apenas seus serviços, ele compra quem você é e a sua história.',
-        exemplo: 'Compartilhar a jornada (dificuldades e vitórias) de como sua empresa começou aproxima o público.'
+        texto: 'Seu posicionamento gera conexão imediata com o público?',
+        apoio: 'As pessoas não compram apenas serviços — compram quem você é e sua história.',
+        exemplo: 'Compartilhe a jornada (dificuldades e vitórias) de como começou. Isso aproxima o público.'
       },
       {
         id: 6,
-        texto: 'Está claro para você (e para o público) por que devem te escolher?',
-        apoio: 'Vender apenas o preço é uma briga ruim. Posicionar-se pelo valor agregado cria defensores da marca.',
-        exemplo: '"Meus móveis são escolhidos não porque são os mais baratos, mas porque duram uma vida toda."'
+        texto: 'Fica claro por que as pessoas devem escolher você?',
+        apoio: 'Vender só por preço é uma briga que você não vence. Posicione-se pelo valor agregado.',
+        exemplo: '"Meus móveis não são os mais baratos, mas duram uma vida toda." — valor acima do preço.'
       },
       {
         id: 7,
-        texto: 'As pessoas conhecem os bastidores do que há por trás do que você vende?',
-        apoio: 'Mostrar os bastidores aumenta o valor percebido das suas ofertas.',
-        exemplo: 'Mostrar como a comida é preparada empacotando os envios nos stories.'
+        texto: 'O público conhece os bastidores do seu trabalho?',
+        apoio: 'Mostrar bastidores aumenta o valor percebido do que você oferece.',
+        exemplo: 'Mostre como o produto é feito ou empacotado nos stories.'
       },
       {
         id: 8,
-        texto: 'Seu posicionamento transmite confiança e autoridade no seu nicho?',
-        apoio: 'Autoridade é construída provando que você resolve problemas como ninguém mais.',
-        exemplo: 'Publicar estudos de caso e antes/depois de clientes satisfeitos.'
+        texto: 'Seu posicionamento transmite confiança e autoridade?',
+        apoio: 'Autoridade se constrói ao provar que você resolve problemas como ninguém mais consegue.',
+        exemplo: 'Publique estudos de caso e antes/depois reais de clientes satisfeitos.'
       },
       {
         id: 9,
-        texto: 'Você é consistente na mensagem que passa em todos os formatos de conteúdo?',
-        apoio: 'Sua mensagem de venda e seu tom de voz devem ser os mesmos em reels, stories e feed.',
-        exemplo: 'Se for amigável nos stories, os textos da legenda não podem ser secos e engessados.'
+        texto: 'Sua mensagem é consistente em todos os formatos (reels, stories, feed)?',
+        apoio: 'O tom de voz e a mensagem devem ser os mesmos em todos os lugares.',
+        exemplo: 'Se é amigável nos stories, não seja seco nas legendas do feed.'
       },
       {
         id: 10,
-        texto: 'Seu perfil cria um sentimento de identificação e pertencimento na audiência?',
-        apoio: 'Pertencimento significa fidelização. Seguidores que se sentem parte de uma tribo defendem sua marca.',
-        exemplo: 'Dar um nome carinhoso para a comunidade ou criar um jargão exclusivo que só vocês usam.'
+        texto: 'Seu perfil cria identificação e senso de pertencimento?',
+        apoio: 'Pertencimento gera fidelização. Quem se sente parte de uma tribo defende sua marca.',
+        exemplo: 'Crie um nome carinhoso para a comunidade ou um jargão exclusivo que só vocês usam.'
       },
     ],
   },
@@ -145,63 +145,63 @@ export const MODULOS: Modulo[] = [
     perguntas: [
       {
         id: 1,
-        texto: 'Seu perfil tem um padrão característico de cores bem definido?',
-        apoio: 'Definir paleta de cores (no máximo 3 a 4 tons) facilita a consolidação na mente das pessoas.',
-        exemplo: 'Ex: O Nubank consolidou o roxo a tal ponto que basta ver uma tela dessa cor para se lembrar do app.'
+        texto: 'Seu perfil tem uma paleta de cores bem definida?',
+        apoio: 'Use no máximo 3 a 4 cores principais. Isso facilita o reconhecimento da sua marca na mente das pessoas.',
+        exemplo: 'O Nubank consolidou o roxo tão bem que qualquer tela roxa já remete ao app.'
       },
       {
         id: 2,
-        texto: 'Seu perfil é de fácil compreensão para quem chega pela primeira vez?',
-        apoio: 'O grid (feed de fotos) não precisa ser um quebra-cabeças, mas precisa passar "limpeza visual".',
-        exemplo: 'Textos fáceis de ler nas capas de reels/carrosséis sem fotos estouradas e escuras de fundo.'
+        texto: 'Seu feed é visualmente limpo e agradável à primeira vista?',
+        apoio: 'O feed não precisa ser perfeito, mas deve ter "limpeza visual" — sem confusão.',
+        exemplo: 'Textos legíveis, imagens claras (não muito escuras), boa qualidade fotográfica em geral.'
       },
       {
         id: 3,
-        texto: 'As fontes que você usa fazem parte da sua identidade e têm boa leitura?',
-        apoio: 'Usar sempre as 2 mesmas fontes (título e corpo) padroniza o visual geral e mostra extremo profissionalismo.',
-        exemplo: 'Ao invés de mudar a fonte em cada story dependendo do humor, usar a fonte da sua marca (ex: Roboto).'
+        texto: 'Você usa sempre as mesmas fontes?',
+        apoio: 'Use 2 fontes apenas (uma para títulos, outra para texto). Isso padroniza e mostra profissionalismo.',
+        exemplo: 'Em vez de trocar fonte a cada story, use sempre a mesma fonte da marca (exemplo: Roboto).'
       },
       {
         id: 4,
-        texto: 'Existem elementos gráficos característicos e reconhecíveis da sua marca?',
-        apoio: 'Elementos de apoio são curvas, ícones, faixas coloridas e filtros fotográficos que geram padronização.',
-        exemplo: 'Sempre aplicar o mesmo preset nas fotos, ou assinar todos os cards de carrossel com uma fitinha.'
+        texto: 'Existem elementos gráficos que identificam sua marca?',
+        apoio: 'Elementos como ícones, divisórias, formas e filtros únicos criam padronização visual.',
+        exemplo: 'Aplicar o mesmo filtro em todas as fotos ou usar uma fita/bordura especial em todos os cards.'
       },
       {
         id: 5,
-        texto: 'As pessoas reconheceriam uma publicação sua mesmo sem ver sua logo?',
-        apoio: 'O teste definitivo de uma boa identidade é a "impressão digital". O post avulso tem "a cara" do seu negócio?',
-        exemplo: 'Ao esbarrar no explore, o cliente vê uma capa preta de letra neon e já deduz que é da sua academia.'
+        texto: 'Pessoas reconheceriam um post seu mesmo sem ver sua logo?',
+        apoio: 'Teste definitivo: o post avulso tem "sua cara"? Se alguém visse no explore, saberia que é seu?',
+        exemplo: 'Capa preta com letras neon no explore = logo visual clara da academia, sem precisar da logo.'
       },
       {
         id: 6,
-        texto: 'Existe um padrão de layout específico nas suas campanhas de venda?',
-        apoio: 'Campanhas promocionais merecem uma força visual diferente de posts normais, chamando ação comercial imediata.',
-        exemplo: 'Sempre usar um quadro vermelho forte ou botão vibrante nas imagens que anunciam preços/descontos.'
+        texto: 'Seus posts de venda têm visual diferente dos outros?',
+        apoio: 'Campanhas merecem força visual diferente para chamar ação comercial imediata.',
+        exemplo: 'Use quadro vermelho vibrante ou elementos de urgência nas imagens de promoção.'
       },
       {
         id: 7,
-        texto: 'Sua identidade visual reflete a personalidade da sua marca?',
-        apoio: 'A estética deve combinar com a mensagem e o nicho. Um escritório focado em luxo exige cores diferentes de um bufê infantil.',
-        exemplo: 'Usar preto, dourado e letras finas transmite luxo e exclusividade, diferentemente do amarelo que exige atenção e dinamismo.'
+        texto: 'Sua identidade visual combina com a personalidade da marca?',
+        apoio: 'A estética deve refletir o nicho: luxo exige cores diferentes de um bufê infantil.',
+        exemplo: 'Preto + dourado + letras finas = luxo. Amarelo + cores vibrantes = energia e dinamismo.'
       },
       {
         id: 8,
-        texto: 'Olhando a tela inicial do perfil, a comunicação visual é impactante?',
-        apoio: 'O conjunto dos últimos 9 a 12 posts formam uma vitrine. Ela aparenta capricho?',
-        exemplo: 'O balanço entre rostos gravados, designs no canva e fotografia crua dão equilíbrio.'
+        texto: 'Seu feed inteiro (últimos 9-12 posts) é uma vitrine atraente?',
+        apoio: 'O feed todo forma uma primeira impressão. Precisa parecer que teve cuidado?',
+        exemplo: 'Equilíbrio entre fotos, designs, e imagens de produtos — sem parecer caótico.'
       },
       {
         id: 9,
-        texto: 'Você investe em mostrar visualmente o que você vende de formas criativas?',
-        apoio: 'Ciente de que Instagram é 100% fotográfico, os cortes, cenas ou artes precisam elevar atratividade da oferta.',
-        exemplo: 'Usar carrossel sem texto, apenas em forma de catálogo e portfólios estéticos.'
+        texto: 'Você mostra o que vende de forma criativa e atrativa?',
+        apoio: 'No Instagram, tudo é visual. Elevar a atratividade do produto é essencial.',
+        exemplo: 'Use carrosséis com produto em diferentes ângulos, portfólios estéticos, catálogos bem feitos.'
       },
       {
         id: 10,
-        texto: 'Seu moodboard visual é consistente e atualizado frequentemente?',
-        apoio: 'Um mapa de referências ajuda e evita que a identidade do perfil fique confusa ao longo dos anos ou na mão de 3os.',
-        exemplo: 'Colecionar num arquivo as fotos que inspiram o perfil, pra nunca perder a direção de estilo.'
+        texto: 'Você tem referências visuais salvas e bem organizadas?',
+        apoio: 'Um moodboard ajuda a manter a identidade consistente ao longo do tempo.',
+        exemplo: 'Colecione imagens que inspiram em uma pasta — assim nunca perde a direção de estilo.'
       },
     ],
   },
@@ -213,63 +213,63 @@ export const MODULOS: Modulo[] = [
     perguntas: [
       {
         id: 1,
-        texto: 'A maioria dos seus seguidores tem o perfil do seu cliente ideal?',
-        apoio: 'Mais vale ter 1.000 seguidores endinheirados querendo seu produto do que 10.000 curiosos falidos.',
-        exemplo: 'Isso significa olhar os stories de quem anda comentando e ver se essas pessoas teriam condição (ou interesse real) em pagar os boletos do seu balcão.'
+        texto: 'A maioria dos seus seguidores é seu cliente ideal?',
+        apoio: '1.000 seguidores com capacidade de pagar valem mais que 10.000 curiosos sem interesse real.',
+        exemplo: 'Veja quem comenta: essas pessoas têm condição e interesse em pagar pelo seu produto?'
       },
       {
         id: 2,
-        texto: 'Quando as pessoas perguntam o preço, elas tendem a fechar negócio?',
-        apoio: 'Taxa de Conversão limpa: se o seguidor já tá alinhado com o nicho, o preço não deve assustar demais.',
-        exemplo: '10 de cada 10 vezes as pessoas desmarcarem por conta de "o pix era pesado", quer dizer que a audiência ainda é o cliente errado.'
+        texto: 'Quando oferece algo, as pessoas tendem a comprar?',
+        apoio: 'Se o seguidor está alinhado, o preço não assusta. Taxa de conversão alta = público correto.',
+        exemplo: 'Se todos desistem por achar caro, o público ainda não é o seu cliente ideal.'
       },
       {
         id: 3,
-        texto: 'Quando você faz uma oferta, o nível de resposta positiva é alto?',
-        apoio: 'Não o simples Like, mas o reply no direct, o salvamento em produtos postados, as mensagens interessadas.',
-        exemplo: 'Lançar uma ação comercial de segunda-feira na rede e ter fila na porta, mesmo de seguidores antigos.'
+        texto: 'Quando faz uma oferta, recebe respostas e interesse real?',
+        apoio: 'Além de curtidas, procure por comentários, DMs interessadas e salvamentos genuínos.',
+        exemplo: 'Oferta no domingo e na segunda há fila de interessados — mesmo de seguidores mais antigos.'
       },
       {
         id: 4,
-        texto: 'Você responde todos os comentários e directs com agilidade e personalização?',
-        apoio: 'Algoritmo e os seres-humanos precisam da sua resposta nas primeiras 2 horas, não três dias.',
-        exemplo: 'Não responder directs só com um coração; usar áudios e interagir de verdade para criar lastro de proximidade.'
+        texto: 'Você responde comentários e DMs rapidamente e de forma personalizada?',
+        apoio: 'O Instagram prioriza respostas rápidas (nas primeiras 2 horas). As pessoas apreciam atendimento real.',
+        exemplo: 'Responda com áudio, não apenas emojis. Crie proximidade genuína e relação duradoura.'
       },
       {
         id: 5,
-        texto: 'Sua audiência é participativa com o que você publica?',
-        apoio: 'O engajamento social ativo mostra quanto os seguidores te "respeitam" e priorizam a leitura do seu post.',
-        exemplo: 'Posts em formato de conversa em que as pessoas complementam a tese ali pelos comentários.'
+        texto: 'Seu público interage bastante com os posts?',
+        apoio: 'Engajamento alto mostra que os seguidores realmente se importam com o que você posta.',
+        exemplo: 'Crie posts em formato de conversa — pergunte algo e as pessoas vão responder.'
       },
       {
         id: 6,
-        texto: 'Você envolve seu público nas tomadas de decisão da sua marca?',
-        apoio: 'Co-criar com a audiência solidifica demais o elo de comunidade e tira as dúvidas de planejamento.',
-        exemplo: 'Pedir que votem em enquetes qual deveria ser a nova embalagem que usará semana que vem.'
+        texto: 'Você pede opinião do público antes de tomar decisões?',
+        apoio: 'Envolver a audiência cria comunidade e fideliza muito mais do que você imagina.',
+        exemplo: 'Faça enquete: "Qual cor você prefere para a nova embalagem?" — assim eles sentem posse.'
       },
       {
         id: 7,
-        texto: 'Seus seguidores recomendam seu conteúdo ou o que você vende?',
-        apoio: 'O marketing boca-a-boca validado dentro do app, via botão de aviãozinho do instagram (compartilhamentos diretos).',
-        exemplo: 'Se as postagens registram pelo relatório que dezenas repassaram para grupos, a audiência é seu exército.'
+        texto: 'Seus seguidores compartilham seu conteúdo com outras pessoas?',
+        apoio: 'Compartilhamentos orgânicos (via DM ou status) são a melhor forma de crescimento.',
+        exemplo: 'Se o relatório mostra compartilhamentos para grupos, significa que a audiência defende sua marca.'
       },
       {
         id: 8,
-        texto: 'Você repete os formatos de publicação que mais atraíram seguidores?',
-        apoio: 'Uma boa pescaria deve repetir os equipamentos que dão certo sem orgulho. Se trouxe audiência antes, pode ser otimizado pra voltar a trazer amanhã.',
-        exemplo: 'Se vídeo-tuto gravados em casa tiveram mais engajamento antes do que post-card no canva, então repita vídeos!'
+        texto: 'Você repete os formatos que mais geraram resultados?',
+        apoio: 'Se um formato funcionou antes, otimize e repita — não tenha preguiça de repetir sucesso.',
+        exemplo: 'Se vídeos caseiros funcionaram mais que designs no Canva, então foque em vídeos.'
       },
       {
         id: 9,
-        texto: 'Você usa os stories estrategicamente para reter e engajar a audiência?',
-        apoio: 'Stories de venda vêm depois de retenções; não seja puramente o folder de hipermercado na rede o dia todo.',
-        exemplo: 'Acordar as pessoas logo cedo com opinião, para só de tarde meter caixinhas ou pitacos vendendo serviços.'
+        texto: 'Você usa stories de forma estratégica para engajar?',
+        apoio: 'Stories são para interação e retenção. Venda vem depois de criar intimidade.',
+        exemplo: 'Comece o dia com opinião genuína, e apenas à tarde lance offers de venda.'
       },
       {
         id: 10,
-        texto: 'Você tem clareza sobre quem é o seu seguidor e quais são suas dores?',
-        apoio: 'Saber ler por que aquelas pessoas estão ali acordadas 1 da manhã num perfil comercial. Qual queixa elas gostariam de acabar primeiro se pagassem você.',
-        exemplo: 'Falar de forma crua 3 dessas angústias dentro de um post resolve o alinhamento com os novos e antigões.'
+        texto: 'Você sabe quem é seu seguidor e qual é a maior dor dele?',
+        apoio: 'Entendar a razão pela qual estão ali é chave para oferecer a solução certa.',
+        exemplo: 'Identifique 3 problemas principais e crie posts que endereçam esses problemas diretamente.'
       },
     ],
   },
@@ -281,63 +281,63 @@ export const MODULOS: Modulo[] = [
     perguntas: [
       {
         id: 1,
-        texto: 'Seu conteúdo tem chamado a atenção das pessoas com frequência?',
-        apoio: 'Métricas de Alcance orgânico. O instagram tem o papel de exibir seu conteúdo solto como um Outdoor para mais pessoas além dos amigos.',
-        exemplo: 'Usando títulos muito mais impactantes ("Ganhos reais a partir disto", ou "Foi aqui que eu perdi em X") quebrando os padrões normais.'
+        texto: 'Seus posts chamam atenção das pessoas com frequência?',
+        apoio: 'Alcance orgânico alto = Instagram está mostrando seu conteúdo para mais gente, não só seguidores.',
+        exemplo: 'Use títulos impactantes: "Ganhei 10k com isso" ou "Aqui está meu maior erro" — quebra padrões.'
       },
       {
         id: 2,
-        texto: 'Você tem atraído novos seguidores consistentemente através do conteúdo?',
-        apoio: 'Um funil estragado mantém o crescimento de novos Leads a zero no mês de apuro.',
-        exemplo: 'Quando publica, confere que o Insta marca um balão "3 seguidores novos das métricas originados nesse post".'
+        texto: 'Você atrai novos seguidores consistentemente?',
+        apoio: 'Novo crescimento significa que o funil de atração está funcionando bem.',
+        exemplo: 'Veja nos insights: quantos novos seguidores vieram de cada post? Repita os que funcionaram.'
       },
       {
         id: 3,
-        texto: 'Seu posicionamento fica claro através do que você escreve nas legendas?',
-        apoio: 'A legenda deve fechar os gaps de onde o vídeo deixou pontas soltas. Elas precisam converter leitores em advogados seus.',
-        exemplo: 'Ao invés de "Veja a novidade, link lá!" elaborar sobre os 3 benefícios primordiais pro consumidor e ser claro na condução política daquela compra.'
+        texto: 'Sua legenda reforça seu posicionamento?',
+        apoio: 'Legenda boa fecha o que o vídeo/imagem deixou em aberto. Ela precisa converter leitores em defensores.',
+        exemplo: 'Em vez de "veja aqui", explique os 3 maiores benefícios do produto para o leitor.'
       },
       {
         id: 4,
-        texto: 'Seu conteúdo é nichado (específico) e não generalista?',
-        apoio: 'Posts que atraem pessoas que pagam não se tratam de dicas motivacionais furadas do globo da tarde que todo mundo faria de qualquer forma.',
-        exemplo: '"Como o gesso 3X do Teto Rebaixado gera micro fissuras da casa nos 2 anos": muito especifico pro cara que vai rebocar ou fechar a firma ali no ato.'
+        texto: 'Seu conteúdo é específico para seu nicho (não genérico)?',
+        apoio: 'Conteúdo genérico (dicas motivacionais) não gera venda. Específico = seu público se identifica.',
+        exemplo: 'Para pedreiro: "Como rebocar sem criar fissuras" — muito mais poderoso que dicas genéricas.'
       },
       {
         id: 5,
-        texto: 'O conteúdo que você posta gera compartilhamento espontâneo?',
-        apoio: 'Conteúdo tem utilidade a longo termo ou identificação profunda o suficiente para outro compartilhar em grupos abertos de conversa.',
-        exemplo: 'Um checklist pra salvar no instagram, mas também repassar via botão do App pros familiares numa DM rindo.'
+        texto: 'As pessoas compartilham seu conteúdo naturalmente?',
+        apoio: 'Conteúdo compartilhável tem utilidade (checklist, dica prática) ou grande identificação emocional.',
+        exemplo: 'Um checklist salvável + repassável para amigos via DM é muito mais forte que um post comum.'
       },
       {
         id: 6,
-        texto: 'Suas postagens seguem uma linha direcionada ao que você vende?',
-        apoio: 'Excesso de fotos de prato de comida para dono de mecânica foge ao fim, a não ser que tenha lição sobre a oficina. As métricas não fecham o caixa de boletos de sexta com post fofinho vazio.',
-        exemplo: 'Tudo de LifeStyle do dono entra desde que reforce que seu suor ou visão tem link com o serviço caro cobrado pelo time de operações da base.'
+        texto: 'Seus posts estão alinhados com o que você vende?',
+        apoio: 'Cada post deve reforçar ou aproximar do seu produto/serviço, mesmo que indiretamente.',
+        exemplo: 'Se vende bolos, mostre receitas, bastidores da confeitaria — tudo ligado ao que oferece.'
       },
       {
         id: 7,
-        texto: 'As pessoas costumam salvar seus conteúdos para ver depois?',
-        apoio: 'Salvamento orgânico treina máquina a aumentar demais o seu Trust/Qualidade do app aos olhos do algoritmo de meta de Zukemberg. É ouro sólido.',
-        exemplo: '"Tire print de roteiros turísticos prontos, ou o manual fiscal que serve pros próximos 6 meses." Salvar garante voltar e converter amanhã.'
+        texto: 'Pessoas salvam seus conteúdos para ver depois?',
+        apoio: 'Salvamentos = conteúdo com valor duradouro. O algoritmo adora isso.',
+        exemplo: 'Guias fiscais, roteiros de viagem, templates — coisas que as pessoas querem manter para depois.'
       },
       {
         id: 8,
-        texto: 'Seu conteúdo gera desejo de compra nos seguidores?',
-        apoio: 'Se ele arrasta as fotos e tem calafrios por ainda não ser cliente ou detentor daquilo.',
-        exemplo: 'Mostrando os bastidores do serviço caro via POV: do pacote, texturas do estofado do veículo nos stories suados.'
+        texto: 'Seu conteúdo gera vontade de comprar?',
+        apoio: 'Bom conteúdo gera desejo — mostrar o melhor, os bastidores, a qualidade do que oferece.',
+        exemplo: 'Mostre como o produto é feito, qualidade dos materiais, resultado final — cria vontade.'
       },
       {
         id: 9,
-        texto: 'Os produtos/serviços que você vende fazem parte do seu universo de conteúdo?',
-        apoio: 'Se vender bolo ou assessoria fiscal de luxo a 3 milhões, a timeline aparenta ter as planilhas ou fornos integradas naturalmente num universo co-existente? ',
-        exemplo: 'Os baldes do negócio estão nas traseiras das publicações diárias de rotina.'
+        texto: 'O que você vende aparece naturalmente no seu feed?',
+        apoio: 'O produto deve estar integrado no universo do seu conteúdo, não ser imposto.',
+        exemplo: 'Se vende bolos, mostre bolos sendo feitos, sabor, processo — tudo natural da rotina.'
       },
       {
         id: 10,
-        texto: 'Todas as suas publicações têm um objetivo claro (atrair, relacionar ou vender)?',
-        apoio: 'Sem meta para post feito ali de supetão as 17hrs para não falhar diária, engajamento e metas só corroem.',
-        exemplo: 'O post tem legenda apontando: Compartilhe (Atrair) | Responda abaixo e crie briga amigável (Relação) | Compre a Link in Bio por R$10 ou esgotar amanha (Vender).'
+        texto: 'Cada post tem um objetivo claro (atrair, relacionar ou vender)?',
+        apoio: 'Posts sem objetivo ficam perdidos. Todo post deve ter uma razão e uma ação esperada.',
+        exemplo: 'Post de educação (atrair) → Posts de relacionamento (engajar) → Posts de venda (converter).'
       },
     ],
   },
@@ -349,63 +349,63 @@ export const MODULOS: Modulo[] = [
     perguntas: [
       {
         id: 1,
-        texto: 'O engajamento que você recebe no feed é alto em relação ao número de seguidores?',
-        apoio: 'Se há 1000 seguidores mas apenas 3 curtidas cegas sem comentários num reel. Essa métrica é de mortalidade de app e fantasmas de algoritmo do insta de robôs e afins.',
-        exemplo: 'Se houver entre 3-10% por mês (10 likes por cada 100 headcounts de visualização do alcance orgânico final, seu negócio respira de fato).'
+        texto: 'Seu engajamento é alto em relação ao número de seguidores?',
+        apoio: 'Engajamento baixo = seguidores não estão interessados ou são bots. Procure por 3-10% de engajamento (curtidas + comentários).',
+        exemplo: '100 seguidores visualizando = 3-10 curtidas/comentários é saudável. Menos que isso = público não engajado.'
       },
       {
         id: 2,
-        texto: 'Quando você abre uma caixinha de perguntas, você recebe boas respostas?',
-        apoio: 'Uma caixinha respondida orgânica (sem autopreenchimento de si mesmo para esquentar a roda do hamster falso de influencer triste) mostra saúde social da parada comercial toda. ',
-        exemplo: 'As indagações virando posts eternos nas redes na semana sequente ao invés do vácuo de resposta zero caixinha ignorada em 22hs totais.'
+        texto: 'Quando faz caixinha de perguntas, recebe respostas genuínas?',
+        apoio: 'Caixinha com respostas reais (não autopreenchidas) mostra que a audiência está interessada e engajada.',
+        exemplo: 'As perguntas viram posts seus na semana seguinte = validação de que o público está acompanhando.'
       },
       {
         id: 3,
-        texto: 'Você tem horários estratégicos definidos para suas publicações?',
-        apoio: 'Horários nobres (Prime time) para suas publicações se aproveitarem de impulsos quentes da concorrência, não os piores pra si com dados de views.',
-        exemplo: 'Checar insights da ferramenta se seu povo da estética noturna tem pico após 21hrs diário etc. E postar e cravar nos minutos certeiros orgânicos totais.'
+        texto: 'Você publica em horários estratégicos (quando seu público está ativo)?',
+        apoio: 'Postar no horário errado é como abrir uma loja à noite. Veja seus insights para descobrir os melhores horários.',
+        exemplo: 'Se seu público está ativo depois das 21h, poste nesse horário — não de madrugada ou cedo demais.'
       },
       {
         id: 4,
-        texto: 'Você usa todos os recursos interativos que o Instagram disponibiliza?',
-        apoio: 'Testes de termômetro, enquete binária, gifs escondidos, os avatares virtuais feios no fim. Instagram gosta quando se usa o ecossistema fechado que ele deu de graça e o algoritmo mima isso para frente aos novos laços.',
-        exemplo: 'Mandar links de zap logo em primeira tela foge as regras. Colocar balanço, barra de curtidas nas vitrines, perguntas longas nativas dos Stories e reels remix.'
+        texto: 'Você usa enquetes, quizzes e caixinhas nos stories?',
+        apoio: 'Instagram valoriza conteúdo interativo. Use enquetes, quiz e perguntas para incentivar engajamento.',
+        exemplo: 'Em vez de apenas falar, coloque enquete "Qual você escolhe?" — muito mais impacto.'
       },
       {
         id: 5,
-        texto: 'As pessoas comentam espontaneamente que gostam do que você posta?',
-        apoio: 'O termômetro do post salvador. As pessoas atestano valor.  Ou as interações do tipo que dizem valeu por partilhar que salvaram sua pele.',
-        exemplo: 'Bateria de diretos do IG de emojis fofinhos de chamas ou replies com "vc falou o q eu precisava pro café da manha hoje no escritório maluco daqui". '
+        texto: 'As pessoas comentam espontaneamente nos seus posts?',
+        apoio: 'Comentários reais significam que o conteúdo tocou a pessoa de alguma forma.',
+        exemplo: 'Alguém comenta "Exatamente isso que eu precisava ouvir!" — isso é engajamento de ouro.'
       },
       {
         id: 6,
-        texto: 'Você usa hashtags de maneira estratégica para ampliar o alcance?',
-        apoio: 'São rodovias. Se usar a genérica #amor, tá competindo o algoritmo global porcamente de bilhoes que somem as vezes e bots falsos.',
-        exemplo: 'Usando #PadariaEmCampinas ao invés de #Bread (o tráfego local do negócio fisíco é muito mais vital e acirrado aos buscadores). '
+        texto: 'Você usa hashtags específicas para seu nicho?',
+        apoio: 'Hashtags genéricas (como #amor) têm bilhões de posts. Foque em hashtags específicas do seu mercado.',
+        exemplo: 'Para padaria em Campinas: #PadariaEmCampinas em vez de #Pão — muito mais relevante.'
       },
       {
         id: 7,
-        texto: 'Suas publicações têm chamadas para ação claras que geram resposta?',
-        apoio: 'Ver se seu público clica e faz e age. É tipo gritar "corre quem é de Deus pro direct" e checar se foram 5 caboco ou Zero. A conversão imediata e tese vital no mercado de conversões digitais velozes das agencias.',
-        exemplo: '"Digite EU QUERO agora" ao invez de falar de forma de manual seco. A tese é dar as cordas pro lead pegar o abacaxi nas conversas laterais secretas. '
+        texto: 'Seus posts têm chamadas para ação claras?',
+        apoio: 'CTA clara = pedir algo específico: "comente", "salve", "acesse o link", "mande DM".',
+        exemplo: 'Em vez de "Vê lá", diga "Comente aqui qual é sua maior dificuldade!" — mais específico, mais respostas.'
       },
       {
         id: 8,
-        texto: 'Você analisa as métricas e adapta sua estratégia baseado nos dados?',
-        apoio: 'Calar achismos pra olhar de forma de planilheiro exato do excel. O dash de profisinais não mente de engajamentos e perfurações ou saídas de seguidores sem dó da base. ',
-        exemplo: 'Tirar uma hr, checar quem evadiu nos últimos dias ou quais post foram 200 salvos seguidos, documentando as vitórias exatas e não os pitacos dos sobrinhos aleatórios de casa sem formação técnica de vendas on-line. '
+        texto: 'Você acompanha métricas e ajusta sua estratégia?',
+        apoio: 'Não confie em achismos — dados falam mais. Veja o que funciona e repita.',
+        exemplo: 'Se descobrir que reels têm 3x mais alcance que fotos, foque em reels a partir de agora.'
       },
       {
         id: 9,
-        texto: 'Você usa os stories ao longo do dia para manter sua audiência aquecida?',
-        apoio: 'A lógica da novela. 1 capitulo de tarde. outro de noite etc. Distrubuir para engordar pontos de vistas e prender a atenção das argamassas on-line mentais e de dopamina no longo prazo do ecossistema e bolha sua social e sua própria tese social da audiência retida de valor das compras da marca própria.',
-        exemplo: '7 posts matinais as 7, some de manha toda, depois volta 2 na hora do almoço de fato, 3 a noite pro rescaldo fatal no quarto escuro do povo cansado deitado na calada fria sem grana para balada na TV e tela do cel brilhante de dopamina pura. '
+        texto: 'Você posta stories ao longo do dia para manter o público engajado?',
+        apoio: 'Stories são como capítulos de uma série — distribuir ao longo do dia mantém a audiência aquecida.',
+        exemplo: 'Publicar de manhã (com opinião), meio do dia (educação) e noite (venda) — distribuição estratégica.'
       },
       {
         id: 10,
-        texto: 'Você testa novos formatos e funcionalidades lançadas pelo Instagram?',
-        apoio: 'A rede bonifica com reach absurdo quem desbrava as neves das frescuras novas.',
-        exemplo: 'Na febre de Colabs entrar e abusar das febres dos views duplos. Ou áudios trendings no inicio sem nojo.'
+        texto: 'Você testa novos formatos lançados pelo Instagram?',
+        apoio: 'Instagram bonifica quem testa novos recursos antes (reels, colabs, áudio). Recebem muito mais alcance.',
+        exemplo: 'Quando sai uma feature nova, teste na sua conta — aproveite o boost inicial do algoritmo.'
       },
     ],
   },

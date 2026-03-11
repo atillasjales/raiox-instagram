@@ -4,140 +4,140 @@ import { MODULOS, getNivel, calcularNotaGeral } from './quiz-data'
 const RECOMENDACOES: Record<string, Record<string, string[]>> = {
   perfil: {
     perdido: [
-      'Reescreva a bio com: o que você faz + para quem + resultado que gera — máximo 3 linhas, sem enrolação.',
-      'Troque a foto de perfil por imagem profissional, nítida, com rosto visível (ou logo limpa).',
-      'Ative todos os botões de contato: email, telefone, WhatsApp — sem exceção.',
-      'Crie 4 destaques estratégicos com capa padronizada: Quem Sou, Serviços, Depoimentos, Como Contratar.',
-      'Fixe um post de apresentação no topo do perfil contando sua história e proposta de valor.',
+      'Reescreva a bio claramente: o que você faz + para quem + resultado. Máximo 3 linhas, sem floreios.',
+      'Coloque uma foto profissional, nítida e bem iluminada (ou logo clara se for empresa).',
+      'Ative todos os botões de contato: e-mail, telefone e WhatsApp em sua bio.',
+      'Crie 4 destaques nomeados: "Quem Sou", "Serviços", "Depoimentos" e "Como Contratar" com capas padronizadas.',
+      'Fixe um post de apresentação explicando sua história, especialidade e proposta de valor.',
     ],
     luneta: [
-      'Revise a bio e adicione chamada para ação clara no final (ex: "Clique no link para saber mais").',
-      'Organize os destaques com capas padronizadas e nomes estratégicos.',
-      'Verifique se o link da bio está atualizado, funcional e direcionando para lugar certo.',
-      'Atualize a foto de perfil a cada 6 meses para manter freshness visual.',
-      'Aumente o número de botões de contato visíveis (adicione link do WhatsApp Business).',
+      'Revise a bio e adicione uma chamada para ação clara: "Clique no link para mais informações".',
+      'Organize seus destaques com nomes estratégicos e capas padronizadas.',
+      'Atualize e teste o link da bio — certifique-se de que leva para o lugar correto.',
+      'Atualize a foto de perfil a cada 6 meses para manter a aparência fresca.',
+      'Ative mais botões de contato: e-mail, telefone, WhatsApp Business.',
     ],
     tesouro: [
-      'Seu perfil está bem estruturado! Mantenha a consistência e revise a bio a cada 3 meses.',
-      'Considere adicionar prova social na bio (ex: "+200 clientes", "10 anos no mercado").',
-      'Crie um "call-to-action" visual — adicione um banner ou sticker na foto de perfil.',
-      'Experimente usar as seções de link em bio para destacar múltiplos CTAs simultaneamente.',
-      'Revise anualmente se os destaques refletem os valores atuais da marca.',
+      'Parabéns! Seu perfil está bem estruturado. Continue mantendo a consistência.',
+      'Adicione prova social na bio para aumentar credibilidade: "+200 clientes satisfeitos", "10 anos no mercado".',
+      'Crie um call-to-action visual: teste adicionar um banner ou destaque especial na foto de perfil.',
+      'Use ferramentas como Linktree para destacar múltiplos links e CTAs na bio.',
+      'Revise anualmente se os destaques continuam refletindo os valores atuais da marca.',
     ],
   },
   posicionamento: {
     perdido: [
-      'Defina sua "bandeira" — uma crença forte que você defende que a concorrência ignora.',
-      'Escreva uma proposta de valor em uma frase: "Eu ajudo [quem] a [resultado] através de [como]".',
-      'Deixe claro o seu nicho — generalista nunca vence. Escolha um avatar de cliente.',
-      'Compartilhe sua história pessoal — histórias vendem 10x mais que features.',
-      'Documente sua metodologia ou processo único — isso é um diferencial competitivo.',
+      'Defina sua "bandeira" — uma crença forte que você defende e que os concorrentes ignoram.',
+      'Escreva sua proposta de valor em uma frase clara: "Ajudo [quem] a [resultado final]".',
+      'Escolha um nicho específico e um cliente ideal — generalistas nunca se destacam.',
+      'Compartilhe sua história pessoal — histórias vendem muito mais que features.',
+      'Documente seu processo ou metodologia única — isso é seu diferencial competitivo.',
     ],
     luneta: [
-      'Emita opiniões mais assertivas sobre seu segmento — concordância gera respeito.',
-      'Crie pelo menos 1 post por semana defendendo sua "bandeira" ou visão de mundo.',
-      'Mostre mais bastidores do trabalho — humanizar a marca gera conexão.',
-      'Destaque qual problema específico você resolve melhor que ninguém.',
-      'Crie um "manifesto" sobre por que sua forma de trabalhar é superior.',
+      'Compartilhe opiniões assertivas sobre seu segmento — posicionamento gera respeito.',
+      'Crie 1 post por semana defendendo sua bandeira ou sua visão de mundo.',
+      'Mostre mais bastidores do trabalho — humanizar marca cria conexão real.',
+      'Destaque o problema específico que você resolve melhor que ninguém.',
+      'Crie um "manifesto" explicando por que sua forma de trabalhar é superior.',
     ],
     tesouro: [
-      'Posicionamento excelente! Explore parcerias com outros criadores do nicho para co-criar.',
-      'Desenvolva um manifesto visual ou conteúdo em série que reforce sua identidade.',
-      'Considere lançar uma comunidade ou programa de mentorado para fortalecer autoridade.',
-      'Posicione-se como thought leader — publique artigos, faça palestras, apareça em podcasts.',
-      'Documente sua jornada e transformações de clientes — social proof em forma de narrativa.',
+      'Posicionamento excelente! Explore parcerias com criadores complementares para co-criar.',
+      'Desenvolva conteúdo em série que reforce sua identidade e marca pessoal.',
+      'Considere lançar uma comunidade exclusiva ou programa de mentorado.',
+      'Consolide autoridade: publique artigos, faça palestras, apareça em podcasts.',
+      'Documente transformações reais de clientes — social proof é muito poderoso.',
     ],
   },
   identidade_visual: {
     perdido: [
-      'Escolha 3 cores principais — use APENAS elas em 100% do conteúdo. Deixe claro qual é a marca.',
-      'Defina 2 fontes: uma para títulos (impactante) e uma para textos (legível) — fixas.',
-      'Crie um moodboard no Canva com referências visuais do seu universo estético.',
-      'Padronize o layout com templates no Canva — fundo, posição de texto, elementos gráficos.',
-      'Crie 5 templates pré-prontos para usar sem pensar — isso economiza tempo e mantém coerência.',
+      'Escolha 3 cores principais e use APENAS elas em todo conteúdo — deixe claro qual é a marca.',
+      'Defina 2 fontes: uma para títulos (impactante) e outra para textos (legível). Fixe-as.',
+      'Crie um moodboard visual no Canva com referências do seu universo estético.',
+      'Padronize layouts com templates no Canva — cores, fontes, posicionamento de elementos.',
+      'Crie 5 templates pré-prontos para usar sem pensar — economiza tempo e mantém coerência.',
     ],
     luneta: [
-      'Revise templates atuais — cores e fontes devem estar 100% consistentes em TUDO.',
-      'Crie elementos gráficos autorais (ícones, divisores, formas) que apareçam em cada post.',
-      'Monte moodboard visual e atualize mensalmente com novas referências.',
-      'Adicione um "watermark" visual ou elemento único que identifique seus posts imediatamente.',
-      'Teste 2-3 paletas de cores diferentes em historinhas antes de fixar na final.',
+      'Revise templates: cores e fontes precisam estar 100% consistentes em tudo.',
+      'Crie elementos gráficos únicos (ícones, divisores, formas) que apareçam em todo post.',
+      'Monte um moodboard visual e atualize-o mensalmente com novas referências.',
+      'Adicione um elemento visual único que identifique seus posts imediatamente.',
+      'Teste 2-3 paletas de cores em stories antes de decidir a paleta final.',
     ],
     tesouro: [
-      'Identidade visual forte! Explore variações criativas mantendo a essência central.',
-      'Documente seu guia de marca (cores, fontes, espaçamento) para terceirizar com segurança.',
-      'Crie versões diferentes para plataformas: formato específico para Reels, Stories, Feed.',
-      'Experimente evoluir a identidade visual anualmente — mude elementos mantendo reconhecimento.',
-      'Considere criar uma "assinatura visual" que só você usa — diferencial impossível de copiar.',
+      'Identidade visual forte! Explore variações criativas mantendo a essência.',
+      'Documente seu guia de marca (cores, fontes, espaçamento) para trabalhar com terceiros.',
+      'Crie versões específicas para cada plataforma (Reels, Stories, Feed).',
+      'Evolua a identidade visual anualmente — mude detalhes mantendo o reconhecimento.',
+      'Crie uma "assinatura visual" única sua — algo impossível de copiar.',
     ],
   },
   seguidores: {
     perdido: [
-      'Defina seu "cliente avatar" com detalhes: idade, profissão, problemas, sonhos, onde passa tempo.',
-      'Responda 100% dos comentários e DMs nas primeiras 2 horas após publicar — algoritmo prioriza.',
-      'Faça enquetes e caixinhas de pergunta nos stories 3x por semana para entender audiência.',
-      'Revise quem está seguindo e ajuste conteúdo para atrair mais pessoas como seu avatar.',
-      'Crie conteúdo exclusivo para seguidores: vídeos atrás das câmeras, sneak peeks, ofertas early access.',
+      'Crie um "cliente ideal" detalhado: idade, profissão, principais problemas, sonhos.',
+      'Responda 100% dos comentários e DMs nas primeiras 2 horas — o algoritmo prioriza rápida resposta.',
+      'Faça enquetes e caixinhas nos stories 3x por semana para entender melhor a audiência.',
+      'Revise quem está seguindo e ajuste conteúdo para atrair mais pessoas como seu cliente ideal.',
+      'Crie conteúdo exclusivo: bastidores, sneak peeks, ofertas early access para seguidores.',
     ],
     luneta: [
-      'Crie rituais de interação: responda stories de seguidores 5x por semana, comente posts deles.',
-      'Envolva audiência em decisões — "qual tema você prefere?" — isso cria senso de comunidade.',
-      'Identifique os 5% de seguidores mais engajados e cultive relacionamento com eles diretamente.',
-      'Faça lives semanais ou quinzenais — conversas ao vivo multiplicam engajamento.',
-      'Crie "challenges" ou dinâmicas que incentivem seguidores a compartilharem na história deles.',
+      'Responda comentários e stories de seguidores 5x por semana — construa relacionamento real.',
+      'Envolva audiência em decisões: "qual tema prefere?" — cria senso de comunidade forte.',
+      'Identifique seus 5% de seguidores mais engajados e cultive relação especial com eles.',
+      'Faça lives semanais ou quinzenais — conversas ao vivo multiplicam engajamento muito.',
+      'Crie desafios ou dinâmicas que incentivem seguidores a compartilhar com amigos.',
     ],
     tesouro: [
-      'Audiência qualificada! Ative programa de indicação — ofereça benefício para quem indica.',
-      'Colha depoimentos em vídeo de clientes — vale mais que qualquer copy escrito.',
-      'Crie programa VIP exclusivo para seguidores mais antigos — ofertas especiais, conteúdo antes.',
-      'Desenvolva comunidade offline (meetups, grupo privado) para fortalecer brand loyalty.',
-      'Aumente preco/oferta para seguidores fiéis — eles já provaram estar dispostos a pagar.',
+      'Audiência qualificada! Ative um programa de indicação — recompense quem indica.',
+      'Peça depoimentos em vídeo de clientes — são muito mais poderosos que textos.',
+      'Crie um programa VIP para seguidores mais antigos — acesso antecipado e ofertas especiais.',
+      'Desenvolva comunidade offline: encontros, grupos privados para fortalecer lealdade.',
+      'Aumente preços de ofertas para seguidores fiéis — eles já provaram disposição de pagar.',
     ],
   },
   conteudo: {
     perdido: [
-      'Mapeie as 10 maiores dores do seu cliente ideal — crie 1 post educativo para cada.',
-      'Aplicar Funil de Conteúdo: 40% atração (curiosidade), 40% relacionamento (valor), 20% oferta.',
-      'Cada post deve ter UM objetivo e UMA chamada para ação — sem confundir a audiência.',
-      'Aposte em carrosséis — geram 3x mais salvamentos, compartilhamentos e alcance orgânico.',
-      'Crie conteúdo que gera salvamentos: listas, checklists, templates, tutoriais, guias.',
+      'Mapeie as 10 maiores dores do cliente ideal — crie 1 post educativo para cada uma.',
+      'Aplique o Funil de Conteúdo: 40% atração (curiosidade), 40% relacionamento (educação), 20% venda.',
+      'Cada post deve ter UM objetivo claro e UMA chamada para ação específica.',
+      'Foque em carrosséis — geram 3x mais salvamentos, compartilhamentos e alcance.',
+      'Crie conteúdo salvável: listas, checklists, templates, tutoriais, guias práticos.',
     ],
     luneta: [
-      'Classifique seus últimos 30 posts: qual % é atração, relacionamento, oferta? Rebalanceie.',
-      'Aumente conteúdo que gera salvamentos — o algoritmo ama isso e amplifica muito.',
-      'Integre produto/serviço de forma natural no conteúdo de valor — não venda direto.',
-      'Teste formatos: qual tipo de carrossel, foto, vídeo funciona melhor com seu público?',
-      'Crie série de conteúdo temático (ex: "segundas de dicas", "sextas de cases") — isso fideliza.',
+      'Analise últimos 30 posts: quantos % são atração, relacionamento, venda? Rebalanceie.',
+      'Aumente conteúdo salvável — o algoritmo amplifica muito esse tipo de post.',
+      'Integre produto/serviço naturalmente no conteúdo educativo — não venda de forma óbvia.',
+      'Teste diferentes formatos: quais carrosséis, fotos, vídeos geram mais engajamento?',
+      'Crie séries temáticas (ex: "segundas de dicas", "sextas de cases") — isso fideliza.',
     ],
     tesouro: [
       'Conteúdo de alto nível! Reaproveitamento: transforme posts em reels, reels em carrosséis.',
-      'Crie série de conteúdo temático profundo para estabelecer autoridade no assunto.',
-      'Desenvolva "pilar de conteúdo" — um tema central que você aborda de múltiplos ângulos.',
-      'Comore tendências rápido — temas virais aplicados ao seu nicho rendem muito alcance.',
-      'Considere lançar mini-cursos gratuitos (carrosséis em série) para gerar leads qualificados.',
+      'Crie série temática profunda para estabelecer autoridade definitiva no seu assunto.',
+      'Desenvolva um "pilar de conteúdo" — um tema central explorado de múltiplos ângulos.',
+      'Acompanhe tendências e adapte-as para seu nicho — rende muito alcance.',
+      'Considere lançar mini-cursos gratuitos (série de carrosséis) para gerar leads qualificados.',
     ],
   },
   engajamento: {
     perdido: [
-      'Coloque chamada para ação em TODOS os posts: "comente sua opinião", "salve para depois", "compartilhe".',
-      'Descubra melhores horários analisando insights — poste quando seu público está mais ativo.',
-      'Use TODOS os recursos interativos: enquetes, quiz, caixinhas, contagem regressiva, "sim/não".',
-      'Responda todos os comentários nas primeiras 2 horas — algoritmo prioriza contas que interagem rápido.',
-      'Crie conteúdo "controverso" (de forma respeitosa) — polêmica gera debate e algoritmo adora debate.',
+      'Coloque chamada para ação em TODOS os posts: "comente", "salve", "compartilhe".',
+      'Analise insights e identifique os melhores horários para postar — poste quando público está ativo.',
+      'Use TODOS os recursos interativos: enquetes, quiz, caixinhas, contagem regressiva.',
+      'Responda comentários nas primeiras 2 horas — o algoritmo prioriza rápida interação.',
+      'Crie conteúdo que gera debate respeitado — polemizar de forma educada = muito engajamento.',
     ],
     luneta: [
-      'Teste 3 horários diferentes por semana e meça qual gera mais engajamento — reproduza vencedor.',
-      'Use caixinha de perguntas 2-3x por semana — é o formato que mais gera salvamentos e DMs.',
-      'Explore Collab para ampliar alcance com outros criadores complementares (não concorrentes).',
-      'Faça "stories interativas" — use polls, quiz, contagem — histórias > destaques para engajamento.',
-      'Responda comentários com vídeo nos stories — cria senso de diálogo e pessoas se sentem ouvidas.',
+      'Teste 3 horários por semana, meça qual gera mais engajamento e reproduza o vencedor.',
+      'Use caixinha de perguntas 2-3x por semana — formato que mais gera salvamentos.',
+      'Explore Collab com criadores complementares (não concorrentes) para ampliar alcance.',
+      'Use stories interativos: enquetes, quiz, contagem regressiva — muito mais efetivo.',
+      'Responda comentários com vídeo nos stories — cria diálogo e pessoas se sentem ouvidas.',
     ],
     tesouro: [
-      'Engajamento excelente! Agora converta esse engajamento em vendas — cria urgência nas ofertas.',
-      'Faça lives mensais com convidados relacionados — multiplica alcance + autoridade.',
+      'Engajamento excelente! Agora converta em vendas — crie urgência nas ofertas.',
+      'Faça lives mensais com convidados no nicho — amplifica alcance e autoridade.',
       'Crie "gatilhos de urgência": oferta por tempo limitado, vagas limitadas, bônus que expira.',
-      'Lance produtos/serviços para audiência engajada — eles conversam melhor que qualquer anúncio.',
-      'Monetize o engajamento: curso, grupo VIP, consultoria — converta fãs em clientes.',
+      'Lance produtos para audiência engajada — eles promovem melhor que qualquer anúncio.',
+      'Monetize: curso, grupo VIP, consultoria — converta fãs engajados em clientes pagantes.',
     ],
   },
 }
@@ -151,9 +151,9 @@ export function gerarDiagnostico(notas: NotasModulo): ResultadoDiagnostico {
     const recs = RECOMENDACOES[modulo.id]?.[nivel] ?? []
 
     const descricoes = {
-      perdido: `Seu ${modulo.titulo.toLowerCase()} precisa de atenção urgente. Isso está limitando seus resultados.`,
-      luneta: `Seu ${modulo.titulo.toLowerCase()} está no caminho certo, mas ainda tem pontos importantes para melhorar.`,
-      tesouro: `Excelente trabalho no ${modulo.titulo.toLowerCase()}! Isso é um diferencial forte do seu perfil.`,
+      perdido: `Seu ${modulo.titulo.toLowerCase()} precisa de atenção imediata. Isso está impactando diretamente seus resultados.`,
+      luneta: `Seu ${modulo.titulo.toLowerCase()} está no caminho certo, mas ainda há melhorias importantes a fazer.`,
+      tesouro: `Parabéns! Seu ${modulo.titulo.toLowerCase()} é muito bom — é um diferencial claro do seu perfil.`,
     }
 
     return {
@@ -246,6 +246,28 @@ Gerar descrições ricas, 5 recomendações por módulo, e uma estratégia de co
         "distribuicao": "1-2 Reels, 1-2 carrosséis ou posts estáticos, 1 story especial",
         "calendario": "Sugestão prática: [dia/hora específicos para este segmento]"
       }
+    },
+    "plano_execucao": {
+      "stories": [
+        {"ideia": "O que fazer no stories (sequência, caixinha, bastidor, etc) — específico para ${segmento}", "copy": "Texto/roteiro exato para usar no stories", "cta": "Ação concreta que deve pedir no final"},
+        {"ideia": "Segunda ideia de stories para ${segmento}", "copy": "Texto do stories 2", "cta": "CTA 2"},
+        {"ideia": "Terceira ideia de stories para ${segmento}", "copy": "Texto do stories 3", "cta": "CTA 3"}
+      ],
+      "reels": [
+        {"ideia": "Conceito do reel adaptado ao segmento ${segmento}", "copy": "Legenda/narração sugerida para o reel", "cta": "CTA para o reel (salvar, comentar, link na bio, etc)"},
+        {"ideia": "Segunda ideia de reel para ${segmento}", "copy": "Legenda 2", "cta": "CTA 2"},
+        {"ideia": "Terceira ideia de reel para ${segmento}", "copy": "Legenda 3", "cta": "CTA 3"}
+      ],
+      "posts": [
+        {"ideia": "Tema do post (imagem, texto, estático) — específico para ${segmento}", "copy": "Legenda completa sugerida", "cta": "CTA do post"},
+        {"ideia": "Segunda ideia de post para ${segmento}", "copy": "Legenda 2", "cta": "CTA 2"},
+        {"ideia": "Terceira ideia de post para ${segmento}", "copy": "Legenda 3", "cta": "CTA 3"}
+      ],
+      "carrosseis": [
+        {"ideia": "Tema do carrossel com estrutura de slides sugerida — para ${segmento}", "copy": "Legenda + título do primeiro slide", "cta": "CTA do carrossel (salvar é a principal)"},
+        {"ideia": "Segunda ideia de carrossel para ${segmento}", "copy": "Legenda 2", "cta": "CTA 2"},
+        {"ideia": "Terceira ideia de carrossel para ${segmento}", "copy": "Legenda 3", "cta": "CTA 3"}
+      ]
     }
   }
 }
@@ -281,7 +303,8 @@ Gerar descrições ricas, 5 recomendações por módulo, e uma estratégia de co
       plano_acao: {
         ...base.plano_acao,
         prioridades: dados.plano_acao?.prioridades || base.plano_acao.prioridades,
-        estrategia_conteudo: dados.plano_acao?.estrategia_conteudo || undefined
+        estrategia_conteudo: dados.plano_acao?.estrategia_conteudo || undefined,
+        plano_execucao: dados.plano_acao?.plano_execucao || undefined
       }
     }
   } catch (e) {
