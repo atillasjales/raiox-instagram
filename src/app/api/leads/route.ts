@@ -32,6 +32,7 @@ export async function POST(req: NextRequest) {
         nome: data.nome,
         email: data.email,
         telefone: data.telefone,
+        instagram_username: 'nao_informado_' + Date.now(), // Fallback para não quebrar a restrição do banco
       })
       .select('id')
       .single()
