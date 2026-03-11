@@ -7,18 +7,18 @@ export default function FinalCTA({ onCTA }: Props) {
     <section className="py-32 px-6 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[800px] h-[400px] bg-brand-orange opacity-[0.05] blur-[100px] rounded-full" />
+        <div className="w-[800px] h-[400px] bg-brand-pink opacity-[0.05] blur-[100px] rounded-full" />
       </div>
 
       <div className="relative max-w-3xl mx-auto text-center">
-        <p className="text-brand-orange text-xs font-medium tracking-widest uppercase mb-6">
+        <p className="text-brand-pink text-xs font-medium tracking-widest uppercase mb-6">
           Pronto para saber a verdade?
         </p>
 
         <h2 className="font-display font-black text-5xl md:text-7xl text-brand-cream leading-[0.95] mb-8">
           Seu Instagram<br />
           merece um{' '}
-          <em className="text-brand-orange">diagnóstico real.</em>
+          <em className="text-brand-pink">diagnóstico real.</em>
         </h2>
 
         <p className="text-brand-muted text-lg leading-relaxed mb-10 max-w-xl mx-auto">
@@ -28,7 +28,7 @@ export default function FinalCTA({ onCTA }: Props) {
 
         <button
           onClick={onCTA}
-          className="group inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange-light text-white font-bold text-xl px-12 py-6 rounded-xl transition-all duration-300 hover:scale-105 animate-pulse-glow"
+          className="group inline-flex items-center gap-3 bg-brand-pink hover:bg-brand-pink-light text-white font-bold text-xl px-12 py-6 rounded-xl transition-all duration-300 hover:scale-105 animate-pulse-glow"
         >
           <span>Quero meu diagnóstico grátis</span>
           <svg

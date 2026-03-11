@@ -24,16 +24,16 @@ export default function SocialProofSection() {
   ]
 
   return (
-    <section className="py-24 px-6 bg-brand-gray">
+    <section className="py-24 px-6 glass-card">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-brand-orange text-xs font-medium tracking-widest uppercase mb-4">
+          <p className="text-brand-pink text-xs font-medium tracking-widest uppercase mb-4">
             Quem já fez
           </p>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-brand-cream leading-tight">
             A verdade incomoda.
             <br />
-            <em className="text-brand-orange">O resultado liberta.</em>
+            <em className="text-brand-pink">O resultado liberta.</em>
           </h2>
         </div>
 
@@ -41,10 +41,10 @@ export default function SocialProofSection() {
           {depoimentos.map((d) => (
             <div
               key={d.nome}
-              className="p-7 rounded-2xl bg-brand-gray-mid border border-white/5 flex flex-col"
+              className="p-7 rounded-2xl glass-card-mid border border-white/5 flex flex-col"
             >
               {/* Quote */}
-              <div className="text-brand-orange text-4xl font-display font-black leading-none mb-4 opacity-40">
+              <div className="text-brand-pink text-4xl font-display font-black leading-none mb-4 opacity-40">
                 "
               </div>
               <p className="text-brand-cream/80 text-sm leading-relaxed flex-1 mb-6">
@@ -57,7 +57,7 @@ export default function SocialProofSection() {
                   <div className="text-brand-muted text-xs mt-0.5">{d.cargo}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-brand-orange font-display font-black text-xl">
+                  <div className="text-brand-pink font-display font-black text-xl">
                     {d.nota}
                   </div>
                   <div className="text-brand-muted text-xs">nota inicial</div>

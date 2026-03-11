@@ -21,10 +21,10 @@ export default function QuizProgress({ total, atual, modulos }: Props) {
               style={{
                 background:
                   i < atual
-                    ? '#FF5C1A'
+                    ? '#FF2D8B'
                     : i === atual
-                    ? 'linear-gradient(90deg, #FF5C1A, #2A2A2A)'
-                    : '#2A2A2A',
+                      ? 'linear-gradient(90deg, #FF2D8B, #2A2A2A)'
+                      : '#2A2A2A',
               }}
             />
           ))}
@@ -32,7 +32,7 @@ export default function QuizProgress({ total, atual, modulos }: Props) {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-brand-orange text-lg">{modulos[atual].emoji}</span>
+            <span className="text-brand-pink text-lg">{modulos[atual].emoji}</span>
             <div>
               <div className="text-xs text-brand-muted uppercase tracking-wider">
                 Módulo {atual + 1} de {total}
@@ -44,7 +44,7 @@ export default function QuizProgress({ total, atual, modulos }: Props) {
           </div>
 
           <div className="text-right">
-            <div className="text-brand-orange font-display font-bold text-lg">
+            <div className="text-brand-pink font-display font-bold text-lg">
               {Math.round(percentual)}%
             </div>
             <div className="text-xs text-brand-muted">concluído</div>

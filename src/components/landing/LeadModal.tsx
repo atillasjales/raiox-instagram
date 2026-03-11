@@ -70,9 +70,9 @@ export default function LeadModal({ isOpen, onClose }: Props) {
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
 
       {/* Modal */}
-      <div className="relative w-full max-w-md bg-brand-gray rounded-3xl border border-white/10 overflow-hidden animate-fade-up">
+      <div className="relative w-full max-w-md glass-card rounded-3xl border border-white/10 overflow-hidden animate-fade-up">
         {/* Top accent */}
-        <div className="h-1 w-full bg-gradient-to-r from-brand-orange to-brand-gold" />
+        <div className="h-1 w-full bg-gradient-to-r from-brand-pink to-brand-purple" />
 
         <div className="p-8">
           {/* Close */}
@@ -107,7 +107,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 {...register('nome')}
                 type="text"
                 placeholder="Como posso te chamar?"
-                className="w-full bg-brand-gray-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                className="w-full glass-card-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-pink transition-colors"
               />
               {errors.nome && (
                 <p className="text-red-400 text-xs mt-1">{errors.nome.message}</p>
@@ -123,7 +123,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 {...register('email')}
                 type="email"
                 placeholder="seu@email.com"
-                className="w-full bg-brand-gray-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                className="w-full glass-card-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-pink transition-colors"
               />
               {errors.email && (
                 <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>
@@ -139,7 +139,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 {...register('telefone')}
                 type="tel"
                 placeholder="(81) 99999-9999"
-                className="w-full bg-brand-gray-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                className="w-full glass-card-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-pink transition-colors"
               />
               {errors.telefone && (
                 <p className="text-red-400 text-xs mt-1">{errors.telefone.message}</p>
@@ -155,7 +155,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-brand-orange hover:bg-brand-orange-light disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-300 mt-2 flex items-center justify-center gap-2"
+              className="w-full bg-brand-pink hover:bg-brand-pink-light disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-300 mt-2 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>

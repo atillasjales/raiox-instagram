@@ -10,7 +10,7 @@ export default function QuizIntro({ nome, onStart }: Props) {
         <div className="text-5xl mb-6">🔬</div>
 
         <h1 className="font-display font-black text-4xl md:text-5xl text-brand-cream mb-4">
-          Olá, <em className="text-brand-orange">{nome}!</em>
+          Olá, <em className="text-brand-pink">{nome}!</em>
         </h1>
 
         <p className="text-brand-muted text-lg leading-relaxed mb-10">
@@ -30,7 +30,7 @@ export default function QuizIntro({ nome, onStart }: Props) {
           ].map((item) => (
             <div
               key={item.text}
-              className="flex items-center gap-3 bg-brand-gray rounded-xl px-5 py-4 border border-white/5"
+              className="flex items-center gap-3 glass-card rounded-xl px-5 py-4 border border-white/5"
             >
               <span className="text-xl">{item.icon}</span>
               <span className="text-sm text-brand-cream/80">{item.text}</span>
@@ -40,7 +40,7 @@ export default function QuizIntro({ nome, onStart }: Props) {
 
         <button
           onClick={onStart}
-          className="w-full bg-brand-orange hover:bg-brand-orange-light text-white font-bold text-lg py-5 rounded-xl transition-all duration-300 hover:scale-105 animate-pulse-glow"
+          className="w-full bg-brand-pink hover:bg-brand-pink-light text-white font-bold text-lg py-5 rounded-xl transition-all duration-300 hover:scale-105 animate-pulse-glow"
         >
           Iniciar diagnóstico →
         </button>

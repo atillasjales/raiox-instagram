@@ -22,8 +22,8 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
 
   function getNivelLabel(n: number) {
     if (n <= 2) return { label: 'Muito ruim', color: '#EF4444' }
-    if (n <= 4) return { label: 'Ruim', color: '#F97316' }
-    if (n <= 6) return { label: 'Regular', color: '#E8B84B' }
+    if (n <= 4) return { label: 'Ruim', color: '#FF2D8B' }
+    if (n <= 6) return { label: 'Regular', color: '#8B2DFF' }
     if (n <= 8) return { label: 'Bom', color: '#84CC16' }
     return { label: 'Excelente', color: '#22C55E' }
   }
@@ -47,21 +47,24 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
   return (
     <div className="animate-fade-up">
       {/* Module header */}
-      <div className="text-center mb-10">
-        <div className="text-5xl mb-3">{modulo.emoji}</div>
-        <h2 className="font-display font-bold text-3xl text-brand-cream mb-2">
+      <div className="text-center mb-12">
+        <div className="text-6xl mb-4 animate-float">{modulo.emoji}</div>
+        <h2 className="font-display font-black text-4xl text-brand-cream mb-3 tracking-tight">
           {modulo.titulo}
         </h2>
-        <p className="text-brand-muted text-sm">{modulo.descricao}</p>
+        <div className="w-12 h-1 bg-gradient-to-r from-brand-pink to-brand-purple mx-auto mb-4 rounded-full" />
+        <p className="text-brand-muted font-medium max-w-lg mx-auto leading-relaxed">
+          {modulo.descricao}
+        </p>
       </div>
 
       {/* Question card */}
-      <div className="bg-brand-gray rounded-2xl border border-white/8 overflow-hidden">
+      <div className="glass-card rounded-[2rem] overflow-hidden p-1 shadow-2xl">
         {/* Question counter */}
         <div className="px-8 pt-6 pb-4 border-b border-white/5">
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-brand-muted uppercase tracking-widest">
-              Pergunta {perguntaAtual + 1} de {modulo.perguntas.length}
+          <div className="flex items-center justify-between px-2">
+            <span className="text-[10px] text-brand-muted uppercase tracking-[0.2em] font-bold">
+              Pergunta {perguntaAtual + 1} / {modulo.perguntas.length}
             </span>
             <div className="flex gap-1">
               {modulo.perguntas.map((_, i) => (
@@ -69,7 +72,7 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
                   key={i}
                   className="w-5 h-1 rounded-full transition-all duration-300"
                   style={{
-                    background: i <= perguntaAtual ? '#FF5C1A' : '#2A2A2A',
+                    background: i <= perguntaAtual ? '#FF2D8B' : '#2A2A2A',
                   }}
                 />
               ))}
@@ -88,22 +91,22 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
         <div className="px-8 pb-8">
           {/* Score display */}
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-brand-muted">1 — Muito ruim</span>
+            <span className="text-[10px] text-brand-muted uppercase tracking-widest font-bold">1 — Muito ruim</span>
             <div className="text-center">
               <div
-                className="font-display font-black text-5xl leading-none transition-all duration-200"
-                style={{ color: nivelInfo.color }}
+                className="font-display font-black text-6xl leading-none transition-all duration-300 transform scale-110"
+                style={{ color: nivelInfo.color, textShadow: `0 0 20px ${nivelInfo.color}40` }}
               >
                 {nota}
               </div>
               <div
-                className="text-sm font-medium mt-1 transition-all duration-200"
+                className="text-xs font-bold mt-2 transition-all duration-300 uppercase tracking-widest"
                 style={{ color: nivelInfo.color }}
               >
                 {nivelInfo.label}
               </div>
             </div>
-            <span className="text-sm text-brand-muted">10 — Excelente</span>
+            <span className="text-[10px] text-brand-muted uppercase tracking-widest font-bold">10 — Excelente</span>
           </div>
 
           {/* Range slider */}
@@ -134,7 +137,7 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
               style={{
                 left: `calc(${((nota - 1) / 9) * 100}% - 12px)`,
                 background: nivelInfo.color,
-                border: `3px solid #0A0A0A`,
+                border: `3px solid #000000`,
                 boxShadow: `0 0 16px ${nivelInfo.color}80`,
               }}
             />
@@ -142,14 +145,16 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
 
           {/* Quick pick buttons */}
           <div className="flex gap-2 mb-6">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            {[1, 3, 5, 7, 10].map((n) => (
               <button
                 key={n}
                 onClick={() => setNotas((prev) => ({ ...prev, [pergunta.id]: n }))}
-                className="flex-1 py-2 rounded-lg text-sm font-bold transition-all duration-150"
+                className="flex-1 py-3 rounded-xl text-xs font-black transition-all duration-300"
                 style={{
-                  background: nota === n ? nivelInfo.color : '#2A2A2A',
-                  color: nota === n ? 'white' : '#888',
+                  background: nota === n ? nivelInfo.color : 'rgba(255,255,255,0.03)',
+                  color: nota === n ? 'white' : 'rgba(255,255,255,0.3)',
+                  border: nota === n ? 'none' : '1px solid rgba(255,255,255,0.05)',
+                  transform: nota === n ? 'scale(1.05)' : 'scale(1)',
                 }}
               >
                 {n}
@@ -170,7 +175,7 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
           )}
           <button
             onClick={avancar}
-            className="flex-1 bg-brand-orange hover:bg-brand-orange-light text-white font-bold py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+            className="flex-1 bg-brand-pink hover:bg-brand-pink-light text-white font-bold py-4 rounded-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
           >
             {isLast ? (
               <>Finalizar módulo ✓</>

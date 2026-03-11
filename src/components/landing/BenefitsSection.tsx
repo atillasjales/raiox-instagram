@@ -27,16 +27,16 @@ export default function BenefitsSection() {
   ]
 
   return (
-    <section className="py-24 px-6 bg-brand-gray">
+    <section className="py-24 px-6 glass-card">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-brand-orange text-xs font-medium tracking-widest uppercase mb-4">
+          <p className="text-brand-pink text-xs font-medium tracking-widest uppercase mb-4">
             Por que fazer?
           </p>
           <h2 className="font-display font-bold text-4xl md:text-5xl text-brand-cream leading-tight">
             Pare de adivinhar.
             <br />
-            <em className="text-brand-orange">Comece a saber.</em>
+            <em className="text-brand-pink">Comece a saber.</em>
           </h2>
         </div>
 
@@ -44,7 +44,7 @@ export default function BenefitsSection() {
           {benefits.map((b, i) => (
             <div
               key={b.title}
-              className="group p-8 rounded-2xl bg-brand-gray-mid border border-white/5 hover:border-brand-orange/30 transition-all duration-300 hover:-translate-y-1"
+              className="group p-8 rounded-2xl glass-card-mid border border-white/5 hover:border-brand-pink/30 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-4xl mb-4">{b.icon}</div>
               <h3 className="font-display font-semibold text-xl text-brand-cream mb-3">

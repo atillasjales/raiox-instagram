@@ -80,8 +80,8 @@ export default function QuizPage() {
         <div className="text-center">
           <div className="relative w-24 h-24 mx-auto mb-8">
             {/* Scanning animation */}
-            <div className="w-24 h-24 border-2 border-brand-orange/30 rounded-lg relative overflow-hidden">
-              <div className="absolute left-0 right-0 h-0.5 bg-brand-orange animate-scan" />
+            <div className="w-24 h-24 border-2 border-brand-pink/30 rounded-lg relative overflow-hidden">
+              <div className="absolute left-0 right-0 h-0.5 bg-brand-pink animate-scan" />
               <div className="absolute inset-0 flex items-center justify-center text-3xl">📱</div>
             </div>
           </div>

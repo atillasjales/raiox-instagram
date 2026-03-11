@@ -95,13 +95,14 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
           <h2 className="font-display font-bold text-2xl text-brand-cream mb-6 text-center">
             Mapa do seu Instagram
           </h2>
-          <div className="bg-brand-gray rounded-2xl border border-white/5 p-6">
+          <div className="glass-card rounded-3xl p-8 shadow-2xl overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-pink/5 to-brand-purple/5 pointer-events-none" />
             <ResponsiveContainer width="100%" height={320}>
               <RadarChart data={radarData}>
-                <PolarGrid stroke="#2A2A2A" />
+                <PolarGrid stroke="rgba(255,255,255,0.1)" />
                 <PolarAngleAxis
                   dataKey="subject"
-                  tick={{ fill: '#888888', fontSize: 13, fontFamily: 'DM Sans' }}
+                  tick={{ fill: '#888888', fontSize: 11, fontFamily: 'DM Sans', fontWeight: 600 }}
                 />
                 <PolarRadiusAxis
                   angle={90}
@@ -112,11 +113,17 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
                 <Radar
                   name="Nota"
                   dataKey="nota"
-                  stroke="#FF5C1A"
-                  fill="#FF5C1A"
-                  fillOpacity={0.15}
-                  strokeWidth={2}
+                  stroke="#FF2D8B"
+                  fill="url(#colorPink)"
+                  fillOpacity={0.4}
+                  strokeWidth={3}
                 />
+                <defs>
+                  <linearGradient id="colorPink" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#FF2D8B" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#8B2DFF" stopOpacity={0.8} />
+                  </linearGradient>
+                </defs>
               </RadarChart>
             </ResponsiveContainer>
           </div>
@@ -136,7 +143,7 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
               return (
                 <div
                   key={diag.modulo}
-                  className="bg-brand-gray rounded-xl border border-white/5 p-6"
+                  className="glass-card glass-card-hover rounded-2xl p-7"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
@@ -160,10 +167,13 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
                   </div>
 
                   {/* Progress bar */}
-                  <div className="h-1.5 bg-brand-gray-mid rounded-full overflow-hidden mb-3">
+                  <div className="h-2 bg-white/5 rounded-full overflow-hidden mb-4 p-[1px]">
                     <div
-                      className="h-full rounded-full transition-all duration-1000"
-                      style={{ width: `${barWidth}%`, background: nivel.cor }}
+                      className="h-full rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(255,45,139,0.3)]"
+                      style={{
+                        width: `${barWidth}%`,
+                        background: `linear-gradient(90deg, ${nivel.cor}, #FF5CAD)`
+                      }}
                     />
                   </div>
 
@@ -174,9 +184,9 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
                       {diag.recomendacoes.slice(0, 2).map((rec, i) => (
                         <div
                           key={i}
-                          className="flex gap-3 text-sm text-brand-cream/80 bg-brand-gray-mid rounded-lg p-3"
+                          className="flex gap-3 text-sm text-brand-cream/80 glass-card-mid rounded-lg p-3"
                         >
-                          <span className="text-brand-orange mt-0.5 flex-none">→</span>
+                          <span className="text-brand-pink mt-0.5 flex-none">→</span>
                           <span>{rec}</span>
                         </div>
                       ))}
@@ -193,14 +203,14 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
           <h2 className="font-display font-bold text-2xl text-brand-cream mb-6">
             🗺️ Seu plano de ação prioritário
           </h2>
-          <div className="bg-brand-gray rounded-2xl border border-white/5 p-7">
+          <div className="glass-card rounded-2xl border border-white/5 p-7">
             <div className="space-y-3">
               {resultado.plano_acao.prioridades.map((prioridade, i) => (
                 <div
                   key={i}
-                  className="flex gap-4 p-4 bg-brand-gray-mid rounded-xl border-l-2 border-brand-orange"
+                  className="flex gap-4 p-4 glass-card-mid rounded-xl border-l-2 border-brand-pink"
                 >
-                  <div className="flex-none w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-bold flex items-center justify-center">
+                  <div className="flex-none w-7 h-7 rounded-full bg-brand-pink/20 text-brand-pink text-xs font-bold flex items-center justify-center">
                     {i + 1}
                   </div>
                   <p className="text-sm text-brand-cream/90 leading-relaxed">{prioridade}</p>
@@ -213,7 +223,7 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
         {/* Offer CTA */}
         <section>
           <div className="rounded-3xl overflow-hidden border border-white/10">
-            <div className="bg-gradient-to-br from-brand-orange to-orange-700 p-8 md:p-12">
+            <div className="bg-gradient-to-br from-brand-pink to-brand-purple p-8 md:p-12">
               <p className="text-white/80 text-sm font-medium uppercase tracking-widest mb-3">
                 Próximo passo
               </p>
@@ -227,35 +237,35 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId }: Props)
               <div className="flex flex-col sm:flex-row gap-4">
                 {(resultado.plano_acao.oferta_recomendada === 'ativacao' ||
                   resultado.plano_acao.oferta_recomendada === 'ambos') && (
-                  <a
-                    href={getWhatsappLink('a Ativação de Social Media (Planejamento 30 dias)')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex flex-col items-center bg-white rounded-2xl px-6 py-5 text-brand-orange transition-transform hover:scale-105 text-center"
-                  >
-                    <span className="text-2xl mb-1">📅</span>
-                    <span className="font-bold text-sm">Ativação de Social Media</span>
-                    <span className="text-xs text-gray-500 mt-1">
-                      Planejamento estratégico 30 dias
-                    </span>
-                  </a>
-                )}
+                    <a
+                      href={getWhatsappLink('a Ativação de Social Media (Planejamento 30 dias)')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex flex-col items-center bg-white rounded-2xl px-6 py-5 text-brand-pink transition-transform hover:scale-105 text-center"
+                    >
+                      <span className="text-2xl mb-1">📅</span>
+                      <span className="font-bold text-sm">Ativação de Social Media</span>
+                      <span className="text-xs text-gray-500 mt-1">
+                        Planejamento estratégico 30 dias
+                      </span>
+                    </a>
+                  )}
 
                 {(resultado.plano_acao.oferta_recomendada === 'assessoria' ||
                   resultado.plano_acao.oferta_recomendada === 'ambos') && (
-                  <a
-                    href={getWhatsappLink('a Assessoria de Marketing e Vendas')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex flex-col items-center bg-white rounded-2xl px-6 py-5 text-brand-orange transition-transform hover:scale-105 text-center"
-                  >
-                    <span className="text-2xl mb-1">🚀</span>
-                    <span className="font-bold text-sm">Assessoria de Marketing e Vendas</span>
-                    <span className="text-xs text-gray-500 mt-1">
-                      Acompanhamento mensal completo
-                    </span>
-                  </a>
-                )}
+                    <a
+                      href={getWhatsappLink('a Assessoria de Marketing e Vendas')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex flex-col items-center bg-white rounded-2xl px-6 py-5 text-brand-pink transition-transform hover:scale-105 text-center"
+                    >
+                      <span className="text-2xl mb-1">🚀</span>
+                      <span className="font-bold text-sm">Assessoria de Marketing e Vendas</span>
+                      <span className="text-xs text-gray-500 mt-1">
+                        Acompanhamento mensal completo
+                      </span>
+                    </a>
+                  )}
               </div>
 
               <p className="text-white/60 text-xs mt-4 text-center">
