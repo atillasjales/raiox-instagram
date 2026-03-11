@@ -143,6 +143,80 @@ export function gerarDiagnostico(notas: NotasModulo): ResultadoDiagnostico {
   }
 }
 
+export async function gerarDiagnosticoComIA(notas: NotasModulo, segmento: string): Promise<ResultadoDiagnostico> {
+  const base = gerarDiagnostico(notas)
+
+  if (!process.env.GEMINI_API_KEY || !segmento || segmento.trim() === '' || segmento === 'Não informado') {
+    return base
+  }
+
+  try {
+    const { GoogleGenAI } = await import('@google/genai')
+    // Initialize standard SDK
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+
+    const prompt = `
+Você é um consultor estrategista de Marketing Digital focado em pequenos e médios negócios do segmento de: ${segmento}.
+Recebi as seguintes avaliações (notas de 0 a 10) do Instagram deste seu cliente cliente:
+
+${base.diagnostico_modulos.map(m => `- ${m.titulo}: ${m.nota} (${m.nivel})`).join('\n')}
+
+Nota Geral: ${base.nota_geral} / 10
+
+Sua missão é gerar um plano de ação (prioridades) e recomendações por módulo (dicas práticas) que conversem diretamente com o dia a dia e o vocabulário do segmento dele (${segmento}). 
+Use exemplos palpáveis e cenários reais (ex: se for pizzaria, fale sobre a foto da pizza saindo do forno).
+Você deve retornar APENAS dados em formato JSON válido, respeitando o schema abaixo.
+
+{
+  "diagnostico_modulos": [
+     {
+       "modulo": "perfil",
+       "descricao": "1 frase explicando a nota desse módulo usando uma pequena analogia com o segmento dele",
+       "recomendacoes": ["Dica 1 super prática", "Dica 2 aplicável hoje"]
+     }
+  ],
+  "plano_acao": {
+     "prioridades": ["Prioridade 1 urgente", "Prioridade 2", "Prioridade 3"]
+  }
+}
+
+Importante: Retorne todos os 6 módulos originais (perfil, posicionamento, identidade_visual, seguidores, conteudo, engajamento). O texto deve ser animador e vendedor.
+`
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json"
+      }
+    })
+
+    const texto = response.text || ''
+    const dados = JSON.parse(texto)
+
+    // Mesclar os dados base com os de IA
+    const diagnostico_modulos = base.diagnostico_modulos.map(m => {
+      const iaMod = dados.diagnostico_modulos?.find((d: any) => d.modulo === m.modulo)
+      return {
+        ...m,
+        descricao: iaMod?.descricao || m.descricao,
+        recomendacoes: iaMod?.recomendacoes || m.recomendacoes,
+      }
+    })
+
+    return {
+      ...base,
+      diagnostico_modulos: diagnostico_modulos,
+      plano_acao: {
+        ...base.plano_acao,
+        prioridades: dados.plano_acao?.prioridades || base.plano_acao.prioridades
+      }
+    }
+  } catch (e) {
+    console.error('[GERAR IA ERROR]', e)
+    return base
+  }
+}
+
 function gerarPlanoAcao(nota_geral: number, modulos: DiagnosticoModulo[]): PlanoAcao {
   const perdidos = modulos.filter((m) => m.nivel === 'perdido')
   const prioridades = perdidos

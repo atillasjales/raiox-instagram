@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabase } from '@/lib/supabase'
-import { gerarDiagnostico } from '@/lib/diagnostico'
+import { gerarDiagnostico, gerarDiagnosticoComIA } from '@/lib/diagnostico'
 import { calcularNotaGeral } from '@/lib/quiz-data'
 import { gerarEmailResultado } from '@/lib/email-template'
 import { NotasModulo } from '@/types'
@@ -8,6 +8,7 @@ import { z } from 'zod'
 
 const schema = z.object({
   lead_id: z.string().uuid(),
+  segmento: z.string().optional(),
   notas: z.object({
     perfil: z.number().min(1).max(10),
     posicionamento: z.number().min(1).max(10),
@@ -21,17 +22,26 @@ const schema = z.object({
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { lead_id, notas } = schema.parse(body)
+    const { lead_id, segmento, notas } = schema.parse(body)
 
     const nota_geral = calcularNotaGeral(notas)
     const supabase = createServerSupabase()
+
+    // Invocar IA para texto personalizado
+    const resultadoIA = await gerarDiagnosticoComIA(notas as NotasModulo, segmento || '')
+
+    // Salva na JSONB
+    const notasToSave = {
+      ...notas,
+      _resultado_ia: resultadoIA
+    }
 
     // Save evaluation
     const { data: avaliacao, error } = await supabase
       .from('avaliacoes')
       .insert({
         lead_id,
-        notas,
+        notas: notasToSave,
         nota_geral,
       })
       .select('id')
@@ -48,9 +58,8 @@ export async function POST(req: NextRequest) {
 
     // Send email asynchronously (don't block the response)
     if (lead?.email) {
-      const resultado = gerarDiagnostico(notas as NotasModulo)
       const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-      const htmlEmail = gerarEmailResultado(lead.nome, resultado, avaliacao.id, appUrl)
+      const htmlEmail = gerarEmailResultado(lead.nome, resultadoIA, avaliacao.id, appUrl)
 
       try {
         const { Resend } = await import('resend')

@@ -19,6 +19,8 @@ export type ModuloId =
 export interface Pergunta {
   id: number
   texto: string
+  apoio?: string
+  exemplo?: string
 }
 
 export interface Modulo {
@@ -80,4 +82,5 @@ export interface LeadFormData {
   nome: string
   email: string
   telefone: string
+  segmento: string
 }

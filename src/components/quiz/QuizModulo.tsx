@@ -81,10 +81,32 @@ export default function QuizModulo({ modulo, onComplete }: Props) {
         </div>
 
         {/* Question text */}
-        <div className="px-8 py-8">
+        <div className="px-8 pt-8 pb-4">
           <p className="text-xl text-brand-cream leading-relaxed font-medium">
             {pergunta.texto}
           </p>
+          {(pergunta.apoio || pergunta.exemplo) && (
+            <div className="mt-5 space-y-3 bg-white/5 rounded-xl p-5 border border-white/5 animate-fade-in-up">
+              {pergunta.apoio && (
+                <div className="flex gap-3">
+                  <span className="text-brand-pink mt-0.5">💡</span>
+                  <p className="text-sm text-brand-muted leading-relaxed">
+                    <strong className="text-brand-cream/80 font-semibold block mb-1">Como avaliar:</strong>
+                    {pergunta.apoio}
+                  </p>
+                </div>
+              )}
+              {pergunta.exemplo && (
+                <div className="flex gap-3 pt-3 border-t border-white/5">
+                  <span className="text-brand-purple mt-0.5">📝</span>
+                  <p className="text-sm text-brand-muted leading-relaxed">
+                    <strong className="text-brand-cream/80 font-semibold block mb-1">Exemplo prático:</strong>
+                    {pergunta.exemplo}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Slider section */}

@@ -14,6 +14,7 @@ const schema = z.object({
     .string()
     .min(10, 'Digite um telefone válido')
     .regex(/^[\d\s\(\)\-\+]+$/, 'Telefone inválido'),
+  segmento: z.string().min(2, 'Selecione ou digite seu segmento'),
 })
 
 interface Props {
@@ -25,6 +26,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [useCustomSegmento, setUseCustomSegmento] = useState(false)
 
   const {
     register,
@@ -46,9 +48,10 @@ export default function LeadModal({ isOpen, onClose }: Props) {
       const json = await res.json()
       if (!res.ok) throw new Error(json.error || 'Erro ao salvar dados')
 
-      // Store lead id in session for the quiz
+      // Store lead info in session for the quiz/resultado
       sessionStorage.setItem('lead_id', json.id)
       sessionStorage.setItem('lead_nome', data.nome)
+      sessionStorage.setItem('lead_segmento', data.segmento)
 
       onClose()
       router.push('/quiz')
@@ -107,7 +110,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 {...register('nome')}
                 type="text"
                 placeholder="Como posso te chamar?"
-                className="w-full glass-card-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-pink transition-colors"
+                className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-pink transition-colors"
               />
               {errors.nome && (
                 <p className="text-red-400 text-xs mt-1">{errors.nome.message}</p>
@@ -123,7 +126,7 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 {...register('email')}
                 type="email"
                 placeholder="seu@email.com"
-                className="w-full glass-card-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-pink transition-colors"
+                className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-pink transition-colors"
               />
               {errors.email && (
                 <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>
@@ -139,10 +142,53 @@ export default function LeadModal({ isOpen, onClose }: Props) {
                 {...register('telefone')}
                 type="tel"
                 placeholder="(81) 99999-9999"
-                className="w-full glass-card-mid border border-white/10 rounded-xl px-4 py-3.5 text-brand-cream placeholder-brand-muted text-sm focus:outline-none focus:border-brand-pink transition-colors"
+                className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-pink transition-colors"
               />
               {errors.telefone && (
                 <p className="text-red-400 text-xs mt-1">{errors.telefone.message}</p>
+              )}
+            </div>
+
+            {/* Segmento */}
+            <div>
+              <label className="block text-xs font-medium text-brand-muted uppercase tracking-wider mb-2">
+                Seu Segmento de Atuação
+              </label>
+              {!useCustomSegmento ? (
+                <select
+                  {...register('segmento')}
+                  onChange={(e) => {
+                    if (e.target.value === 'Outro') {
+                      setUseCustomSegmento(true)
+                      e.target.value = ''
+                    } else {
+                      register('segmento').onChange(e)
+                    }
+                  }}
+                  className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-pink transition-colors appearance-none"
+                >
+                  <option value="" disabled selected>Selecione seu nicho...</option>
+                  <option value="Clínica Médica / Odontológica">Clínica Médica / Odontológica</option>
+                  <option value="Estética e Beleza">Estética e Beleza</option>
+                  <option value="Advocacia / Escritório Jurídico">Advocacia / Escritório Jurídico</option>
+                  <option value="Imobiliária / Corretor">Imobiliária / Corretor</option>
+                  <option value="Varejo / Loja Física">Varejo / Loja Física</option>
+                  <option value="Restaurante / Delivery">Restaurante / Delivery</option>
+                  <option value="Prestação de Serviços">Prestação de Serviços</option>
+                  <option value="Infoproduto / Educação">Infoproduto / Educação</option>
+                  <option value="Outro">Outro (Digitar)</option>
+                </select>
+              ) : (
+                <input
+                  {...register('segmento')}
+                  type="text"
+                  placeholder="Qual o seu segmento?"
+                  className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-pink transition-colors"
+                  autoFocus
+                />
+              )}
+              {errors.segmento && (
+                <p className="text-red-400 text-xs mt-1">{errors.segmento.message}</p>
               )}
             </div>
 
