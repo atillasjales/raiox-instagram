@@ -46,7 +46,7 @@ export function gerarEmailResultado(
 <body>
   <div class="container">
     <div class="header">
-      <img src="https://raiox.troppadigital.com.br/logos/logo-white.png" alt="Troppa Digital" width="160" height="auto" style="display:block;margin:0 auto 32px;border:0;" />
+      <img src="${appUrl}/logos/logo-white.png" alt="Troppa Digital" width="160" height="auto" style="display:block;margin:0 auto 32px;border:0;" />
       <h1 class="title">Seu Raio-X do Instagram está pronto, ${nome}!</h1>
       ${instagramProfile ? `<div style="color: #FF2D8B; font-size: 16px; margin-top: 16px; font-weight: 700;">@${instagramProfile.replace('@', '')}</div>` : ''}
     </div>
@@ -82,11 +82,11 @@ export function gerarEmailResultado(
     <div class="cta-box">
       <div class="cta-title">Vamos acelerar seus resultados?</div>
       <div class="cta-text">${resultado.plano_acao.mensagem_cta}</div>
-      <a href="https://raiox.troppadigital.com.br/resultado/${avaliacaoId}" class="cta-button">VER DIAGNÓSTICO COMPLETO</a>
+      <a href="${appUrl}/resultado/${avaliacaoId}" class="cta-button">VER DIAGNÓSTICO COMPLETO</a>
     </div>
 
     <div class="footer">
-      <img src="https://raiox.troppadigital.com.br/logos/logo-white.png" alt="Troppa Digital" width="100" height="auto" style="display:block;margin:0 auto;border:0;opacity:0.5;" />
+      <img src="${appUrl}/logos/logo-white.png" alt="Troppa Digital" width="100" height="auto" style="display:block;margin:0 auto;border:0;opacity:0.5;" />
       <div class="footer-text">
         <p class="footer-highlight">12 anos transformando negócios através de estratégia digital de alto nível.</p>
         <p style="margin-top: 12px;">© Troppa Digital. Este e-mail é um relatório exclusivo do seu diagnóstico.</p>

@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     // Send email asynchronously (don't block the response)
     if (lead?.email) {
       console.log('[API] Lead found, sending email to:', lead.email)
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://raiox.troppadigital.com.br'
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://raiox-instagram.vercel.app'
       const htmlEmail = gerarEmailResultado(lead.nome, resultadoIA, avaliacao.id, appUrl, instagram_profile)
 
       try {
