@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     // Send email asynchronously (don't block the response)
     if (lead?.email) {
       console.log('[API] Lead found, sending email to:', lead.email)
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://raiox.troppadigital.com.br'
       const htmlEmail = gerarEmailResultado(lead.nome, resultadoIA, avaliacao.id, appUrl, instagram_profile)
 
       try {
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
 
         console.log('[API] Invoking Resend...')
         const emailResponse = await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || 'raio-x@troppadigital.com.br',
+          from: 'Troppa Digital <raio-x@consultoria.troppadigital.com.br>',
           to: lead.email,
           subject: `Seu Raio-X do Instagram está pronto, ${lead.nome}! 📊`,
           html: htmlEmail,
