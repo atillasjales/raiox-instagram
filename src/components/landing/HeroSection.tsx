@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 interface Props {
   onCTA: () => void
 }
@@ -24,10 +26,14 @@ export default function HeroSection({ onCTA }: Props) {
       {/* Nav */}
       <nav className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-8">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-brand-pink to-brand-purple rounded-lg flex items-center justify-center shadow-lg shadow-brand-pink/20">
-            <span className="text-white text-sm font-bold">T</span>
-          </div>
-          <span className="text-sm font-bold tracking-[0.2em] text-brand-cream/90">TROPPA DIGITAL</span>
+          <Image
+            src="/logos/logo-white.png"
+            alt="Troppa Digital"
+            width={120}
+            height={40}
+            quality={95}
+            className="w-auto h-8 md:h-10"
+          />
         </div>
         <div className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-[10px] text-brand-muted tracking-[0.2em] uppercase">
           12 anos de mercado

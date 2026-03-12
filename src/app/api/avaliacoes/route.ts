@@ -54,6 +54,7 @@ export async function POST(req: NextRequest) {
     if (error) throw error
 
     // Get lead email for sending result
+    console.log('[API] Searching for lead:', lead_id)
     const { data: lead } = await supabase
       .from('leads')
       .select('nome, email')
@@ -62,6 +63,7 @@ export async function POST(req: NextRequest) {
 
     // Send email asynchronously (don't block the response)
     if (lead?.email) {
+      console.log('[API] Lead found, sending email to:', lead.email)
       const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
       const htmlEmail = gerarEmailResultado(lead.nome, resultadoIA, avaliacao.id, appUrl, instagram_profile)
 
@@ -69,16 +71,20 @@ export async function POST(req: NextRequest) {
         const { Resend } = await import('resend')
         const resend = new Resend(process.env.RESEND_API_KEY)
 
-        await resend.emails.send({
+        console.log('[API] Invoking Resend...')
+        const emailResponse = await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'raio-x@troppadigital.com.br',
           to: lead.email,
           subject: `Seu Raio-X do Instagram está pronto, ${lead.nome}! 📊`,
           html: htmlEmail,
         })
+        console.log('[API] Resend response:', emailResponse)
       } catch (emailErr) {
-        console.error('[Email send error]', emailErr)
+        console.error('[API] [Email send error]', emailErr)
         // Don't throw — email failure shouldn't block the user
       }
+    } else {
+      console.warn('[API] Lead not found or has no email:', lead_id)
     }
 
     return NextResponse.json({ id: avaliacao.id })

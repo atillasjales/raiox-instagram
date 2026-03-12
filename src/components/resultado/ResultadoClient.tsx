@@ -556,8 +556,11 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
                       href={getWhatsappLink('a Ativação de Social Media (Planejamento 30 dias)')}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex flex-col items-center bg-white rounded-2xl px-6 py-5 text-brand-pink transition-transform hover:scale-105 text-center"
+                      className="flex-1 flex flex-col items-center bg-white rounded-2xl px-6 py-5 text-brand-pink transition-transform hover:scale-105 text-center relative overflow-hidden"
                     >
+                      <div className="absolute top-2 right-2 bg-brand-pink text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
+                        Parcelamento disponível
+                      </div>
                       <span className="text-2xl mb-1">📅</span>
                       <span className="font-bold text-sm">Ativação de Social Media</span>
                       <span className="text-xs text-gray-500 mt-1">
@@ -584,7 +587,7 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
               </div>
 
               <p className="text-white/60 text-xs mt-4 text-center">
-                Troppa Digital — 12 anos de mercado · Pagamento parcelado disponível
+                Troppa Digital — 12 anos de mercado · Pagamento parcelado disponível em até 12x
               </p>
             </div>
           </div>
@@ -594,11 +597,21 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
       {/* PDF HIDDEN CONTENT FOR PRINTING ONLY */}
       <div id="pdf-content" className="hidden bg-white text-black font-sans" style={{ width: '100%', maxWidth: '750px', margin: '0 auto', padding: '40px 20px' }}>
         {/* Header */}
-        <div className="border-b-2 border-brand-pink pb-8 mb-8">
-          <h1 className="text-2xl font-black text-gray-900 mb-1">Raio-X do Instagram — Diagnóstico Completo</h1>
-          <p className="text-gray-500 text-sm tracking-widest uppercase mb-6">Relatório Oficial — Troppa Digital</p>
+        <div className="border-b-2 border-brand-pink pb-8 mb-8 flex justify-between items-start">
+          <div>
+            <Image
+              src="/logos/logo-black.png"
+              alt="Troppa Digital"
+              width={140}
+              height={46}
+              quality={95}
+              className="mb-4"
+            />
+            <h1 className="text-2xl font-black text-gray-900 mb-1">Raio-X do Instagram — Diagnóstico Completo</h1>
+            <p className="text-gray-500 text-sm tracking-widest uppercase mb-6">Relatório Oficial — Troppa Digital</p>
+          </div>
 
-          <div className="flex justify-between items-end">
+          <div className="flex flex-col items-end">
             <div>
               <p className="text-xs text-gray-500">Cliente:</p>
               <p className="text-lg font-bold text-gray-800">{nome}</p>
@@ -838,8 +851,47 @@ export default function ResultadoClient({ resultado, nome, avaliacaoId, segmento
           </div>
         )}
 
+        {/* Próximos Passos PDF */}
+        <div className="mt-12 pt-8 border-t-2 border-brand-pink break-inside-avoid page-break-before">
+          <p className="text-brand-pink text-xs font-bold tracking-widest uppercase mb-2">Próximo passo</p>
+          <h2 className="text-xl font-black text-gray-900 mb-4">Acelere seus resultados com a Troppa Digital</h2>
+          <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+            Agora que você tem o diagnóstico, o próximo passo é a execução estratégica. A Troppa Digital oferece soluções completas para transformar seu Instagram em uma máquina de vendas.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl relative overflow-hidden">
+              <div className="absolute top-2 right-2 bg-pink-100 text-pink-700 text-[8px] font-bold px-2 py-0.5 rounded-full">
+                Parcelamento disponível
+              </div>
+              <p className="font-bold text-sm text-gray-800 mb-1">📅 Ativação de Social Media</p>
+              <p className="text-[10px] text-gray-600 leading-tight">Planejamento estratégico completo para os próximos 30 dias de conteúdo.</p>
+            </div>
+            <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
+              <p className="font-bold text-sm text-gray-800 mb-1">🚀 Assessoria de Marketing</p>
+              <p className="text-[10px] text-gray-600 leading-tight">Serviço de acompanhamento mensal completo para escala e performance.</p>
+            </div>
+          </div>
+
+          <div className="bg-gray-900 text-white p-6 rounded-xl text-center">
+            <p className="text-sm font-bold mb-2">Fale com um estrategista agora</p>
+            <p className="text-xs text-gray-400 mb-4">Tire suas dúvidas sobre os serviços e receba uma proposta personalizada.</p>
+            <p className="text-brand-pink font-bold text-lg">wa.me/troppadigital</p>
+          </div>
+        </div>
+
         {/* Footer */}
         <div className="text-center text-xs text-gray-400 mt-12 pt-6 border-t border-gray-300 page-break-before">
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/logos/logo-black.png"
+              alt="Troppa Digital"
+              width={100}
+              height={33}
+              quality={95}
+              style={{ opacity: 0.5 }}
+            />
+          </div>
           <p>Gerado automaticamente por <strong>Troppa Digital</strong></p>
           <p className="mt-1">www.troppadigital.com.br | {new Date().toLocaleDateString('pt-BR')}</p>
         </div>
